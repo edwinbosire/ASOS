@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, Dimensions, Text} from 'react-native';
-import {darkText, lightText} from '../AsosColors'
+import {StyleSheet, View, Image, Dimensions, Text, TouchableHighlight} from 'react-native';
+import {darkText, lightText, extraLightBackground} from '../AsosColors'
 
 const {width, height} = Dimensions.get('window');
 const PADDING = 10;
@@ -10,7 +10,7 @@ export default class Card extends Component {
         if (this.props.title){
             return this.renderCardWithTitle(this.props.title, this.props.subtitle)
         }else if(this.props.price){
-            return this.renderCardWithPrice("£30.0", this.props.subtitle)
+            return this.renderCardWithPrice(this.props.price, this.props.subtitle)
         }else{
             return this.renderStandard()
         }
@@ -18,21 +18,25 @@ export default class Card extends Component {
 
 renderCardWithTitle(title, subtitle) {
     return(
-        <View style={{height:320, backgroundColor:'white'}}>
-            <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
-            <Text style={styles.title}> {title} </Text>
-            <Text style={styles.subTitle}> {subtitle} </Text>
-        </View>
+        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
+            <View style={{height:320, backgroundColor:'white'}}>
+                <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
+                <Text style={styles.title}> {title} </Text>
+                <Text style={styles.subTitle}> {subtitle} </Text>
+            </View>
+        </TouchableHighlight>
     )
 }
 
 renderCardWithPrice(price, subtitle) {
     return(
-        <View style={{height:320, backgroundColor:'white'}}>
-            <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
-            <Text style={styles.price}> {price} </Text>
-            <Text style={styles.subTitlePrice}> {subtitle} </Text>
-        </View>
+        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
+            <View style={{height:320, backgroundColor:'white'}}>
+                <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
+                <Text style={styles.price}> {price} </Text>
+                <Text style={styles.subTitlePrice}> {subtitle} </Text>
+            </View>
+        </TouchableHighlight>
     )
 }
 
@@ -42,6 +46,9 @@ renderStandard(){
     )
 }
 
+onCardPressed(){
+
+}
     styleForType(type) {
         switch (type) {
             case 'wide':

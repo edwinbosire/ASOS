@@ -9,6 +9,7 @@ import {
 
 import {lightBackground} from '../AsosColors';
 import Card from '../components/Card'
+import Header from '../components/RecentHeader'
 
 const premiumDeliveryBanner = 'http://content.asos-media.com/~/media/070417040134en-GB/unisex/service-messages/' +
         '2017/Premier/premier-service-message-iphone-app-v2.png'
@@ -26,6 +27,7 @@ const freeDelivery = 'http://content.asos-media.com/~/media/191216102247en-GB/un
 const salesBanner2 = 'http://content.asos-media.com/~/media/040417100631en-GB/mw-homepage/2017/April/1' +
         '1/App/mw-INT-mss-iphone-1024x672-week2.jpg'
 const recommendationBanner = 'http://content.asos-media.com/~/media/100217042313en-GB/asosapp/homepage/SERVICE_MESSAGES_FEB17/v2-unisex-rec-iphone-1024x380-v1.png';
+
 class Homepage extends Component {
     render() {
         return (
@@ -45,7 +47,9 @@ class Homepage extends Component {
                     <Card type='wide' source={freeDelivery}/>
                     <Card type='standard' source={salesBanner2}/>
                     <Card type='standard-short' source={recommendationBanner}/>
-
+                    
+                    <Header />
+                    
                     <ScrollView horizontal={true} contentContainerStyle={styles.recentView}> 
                         <Card type='grid-item' price='£35.00' subtitle="ASOS light camo jacket" source={newTrend}/>
                         <Card type='grid-item' price='£55.0' subtitle="Spring into summer" source={holiday}/>
