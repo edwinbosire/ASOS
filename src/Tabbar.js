@@ -8,6 +8,7 @@ import Basket from './containers/Basket';
 import Profile from './containers/Profile';
 import Icons from './TabbarIcons'
 import Color from './AsosColors'
+
 export default class TabBarView extends Component {
 
     constructor(props) {

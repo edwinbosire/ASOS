@@ -1,0 +1,161 @@
+import React, {Component} from 'react';
+import {StyleSheet, View, Image, Dimensions, Text} from 'react-native';
+import {darkText, lightText} from '../AsosColors'
+
+const {width, height} = Dimensions.get('window');
+const PADDING = 10;
+
+export default class Card extends Component {
+    render() {
+        if (this.props.title){
+            return this.renderCardWithTitle(this.props.title, this.props.subtitle)
+        }else if(this.props.price){
+            return this.renderCardWithPrice("£30.0", this.props.subtitle)
+        }else{
+            return this.renderStandard()
+        }
+    }
+
+renderCardWithTitle(title, subtitle) {
+    return(
+        <View style={{height:320, backgroundColor:'white'}}>
+            <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
+            <Text style={styles.title}> {title} </Text>
+            <Text style={styles.subTitle}> {subtitle} </Text>
+        </View>
+    )
+}
+
+renderCardWithPrice(price, subtitle) {
+    return(
+        <View style={{height:320, backgroundColor:'white'}}>
+            <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
+            <Text style={styles.price}> {price} </Text>
+            <Text style={styles.subTitlePrice}> {subtitle} </Text>
+        </View>
+    )
+}
+
+renderStandard(){
+    return(
+        <Image style={this.styleForType(this.props.type)} source={{uri: this.props.source}}/>
+    )
+}
+
+    styleForType(type) {
+        switch (type) {
+            case 'wide':
+                return styles.promotionBanner;
+                break;
+            case 'standard':
+                return styles.standardCard;
+                break;
+            case 'tall':
+                return styles.tallCard;
+                break;
+            case 'grid-item':
+                return styles.gridItem;
+            case 'standard-short':
+                return styles.standardShort;
+            default:
+                return styles.container;
+                break
+        }
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    promotionBanner: {
+        width:width - PADDING*2,
+        height: 70,
+        resizeMode:'contain'
+    },
+    standardCard: {
+        height: 270,
+        width:width - PADDING*2,
+        resizeMode:'contain'
+    },
+    tallCard: {
+        height:450,
+        width:width - PADDING*2,
+        overflow:'hidden'
+    },
+    standardShort: {
+        height: 150,
+        width:width - PADDING*2,
+        resizeMode:'contain'
+    },
+    gridItem: {
+        height: 300,
+        width:(width/2) - PADDING*2 - PADDING,
+        marginTop:10,
+        marginBottom:10,
+        margin: 10,
+    },
+    title:{
+        fontFamily:'futura',
+        fontSize:18,
+        fontWeight:"300",
+        textAlign: 'center',
+        color:darkText,
+        width:(width/2) - PADDING*2 - PADDING,
+    },
+    subTitle:{
+        fontFamily:'futura',
+        fontSize:16,
+        fontWeight:"200",
+        textAlign: 'center',
+        color:lightText,
+        width:(width/2) - PADDING*2 - PADDING,
+    },
+    subTitlePrice:{
+        fontFamily:'futura',
+        fontSize:16,
+        fontWeight:"200",
+        textAlign: 'left',
+        paddingHorizontal:10,
+        color:lightText,
+        width:(width/2) - PADDING*2 - PADDING,
+    },
+        price:{
+        fontFamily:'futura',
+        fontSize:16,
+        fontWeight:"600",
+        textAlign: 'left',
+        paddingLeft:10,
+        color:darkText,
+        width:90,
+    },
+});
+
+/**
+ *
+ *                     <FitImage
+                        source={{
+                        uri: saleBanner
+                    }}
+                        style={styles.saleBanner}/>
+
+                    <FitImage
+                        source={{
+                        uri: newSeason
+                    }}
+                        style={styles.saleBanner}/>
+
+                    <FitImage
+                        source={{
+                        uri: saleBanner
+                    }}
+                        style={styles.saleBanner}/>
+
+                    <FitImage
+                        source={{
+                        uri: saleBanner
+                    }}
+                        style={styles.saleBanner}/>
+
+
+ */
