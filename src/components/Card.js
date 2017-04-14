@@ -19,7 +19,7 @@ export default class Card extends Component {
 renderCardWithTitle(title, subtitle) {
     return(
         <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
-            <View style={{height:320, backgroundColor:'white'}}>
+            <View style={{height:350, backgroundColor:'white'}}>
                 <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
                 <Text style={styles.title}> {title} </Text>
                 <Text style={styles.subTitle}> {subtitle} </Text>
@@ -42,7 +42,9 @@ renderCardWithPrice(price, subtitle) {
 
 renderStandard(){
     return(
-        <Image style={this.styleForType(this.props.type)} source={{uri: this.props.source}}/>
+        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
+            <Image style={this.styleForType(this.props.type)} source={{uri: this.props.source}}/>
+        </TouchableHighlight>
     )
 }
 
@@ -91,12 +93,12 @@ const styles = StyleSheet.create({
         overflow:'hidden'
     },
     standardShort: {
-        height: 150,
+        height: 125,
         width:width - PADDING*2,
         resizeMode:'contain'
     },
     gridItem: {
-        height: 300,
+        height: 350,
         width:(width/2) - PADDING*2 - PADDING,
         marginTop:10,
         marginBottom:10,

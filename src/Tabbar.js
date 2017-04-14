@@ -6,6 +6,7 @@ import Favourites from './containers/Favourites';
 import Homepage from './containers/Homepage';
 import Basket from './containers/Basket';
 import Profile from './containers/Profile';
+import Category from './containers/Category';
 import Icons from './TabbarIcons'
 import Color from './AsosColors'
 
@@ -15,7 +16,7 @@ export default class TabBarView extends Component {
         super(props)
         this.state = {
             presses: 0,
-            selectedTab: 'Home'
+            selectedTab: 'Search'
         }
     }
     render() {
@@ -43,7 +44,7 @@ export default class TabBarView extends Component {
                     onPress={() => {
                     this.setState({selectedTab: 'Search'});
                 }}>
-                    {< Search />}
+                    {< Category />}
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title=""
