@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TouchableHighlight, TouchableOpacity, Image} from 'react-native';
-import {lightBackground, extraLightBackground} from '../AsosColors';
+import {StyleSheet, View, Dimensions, TouchableOpacity, Image, Text} from 'react-native';
+import {lightBackground, extraLightBackground, darkText} from '../AsosColors';
+const {width, height} = Dimensions.get('window');
 
 export default class NavBar extends Component {
     render() {
         return (
             <View style={styles.navigationBar}>
                 <TouchableOpacity activeOpacity={0.8} underlayColor={extraLightBackground} onPress={()=> this.onBackButtonPressed()}>
-
                 <Image
                     style={styles.backButton}
                     source={{
                     uri: backButtonImage
                 }}/>
                 </TouchableOpacity>
+                <Text style={styles.title}> {this.props.title} </Text>
             </View>
 
         );
@@ -24,22 +25,33 @@ export default class NavBar extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        flexDirection:'row'
     },
     navigationBar: {
         height: 54,
-        alignSelf: 'stretch',
+        width:width,
         paddingLeft: -10,
         paddingRight: -10,
         borderBottomWidth: 1,
         borderColor: extraLightBackground,
-        alignItems: 'flex-start'
+        alignItems: 'center',
+        flexDirection:'row',
     },
     backButton: {
         height: 44,
         width: 60,
         resizeMode: 'center'
-    }
+    },
+    title: {
+        fontFamily: 'futura',
+        fontSize: 18,
+        fontWeight: "600",
+        textAlign: 'center',
+        color: darkText,
+        width: (width - 120),
+    },
+
 
 });
 

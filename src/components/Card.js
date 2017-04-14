@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, Dimensions, Text, TouchableHighlight} from 'react-native';
 import {darkText, lightText, extraLightBackground} from '../AsosColors'
+import Icons from '../TabbarIcons'
 
 const {width, height} = Dimensions.get('window');
 const PADDING = 10;
@@ -33,7 +34,10 @@ renderCardWithPrice(price, subtitle) {
         <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
             <View style={{height:320, backgroundColor:'white'}}>
                 <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
-                <Text style={styles.price}> {price} </Text>
+                <View style={{justifyContent:'space-between', flexDirection:'row'}}>
+                    <Text style={styles.price}> {price} </Text>
+                    <Image style={{height:25, width:25, resizeMode:'contain', marginHorizontal:10,}} source={{uri:Icons.likeIcon} } />
+                </View>
                 <Text style={styles.subTitlePrice}> {subtitle} </Text>
             </View>
         </TouchableHighlight>
