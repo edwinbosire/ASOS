@@ -3,9 +3,9 @@ import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity } fro
 import {lightBackground, extraLightBackground} from '../AsosColors';
 import Card from '../components/Card'
 import NavBar from '../components/NavBar'
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 const {width, height} = Dimensions.get('window');
-
+const myIcon = (<Icon name="rocket" size={30} color="#900" />)
 export default class ProductInfo extends Component { 
     render() {
         return (
@@ -20,7 +20,7 @@ export default class ProductInfo extends Component {
                             uri: backButtonImage
                         }}/>
                         </TouchableOpacity>
-
+                        <Icon name="rocket" size={30} color="#900" />
                     </Image>
                 </ScrollView>
             </View>   
