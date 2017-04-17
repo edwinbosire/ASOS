@@ -7,7 +7,7 @@ export default class ActionBar extends Component {
     render() {
         return (
             <View style={ styles.container }>
-                <Text style={styles.buttonText}> SORT ▼ </Text>
+                <Text style={styles.buttonText}> SORT  ▼ </Text>
                 <View style={{backgroundColor:extraLightBackground, height:30, width:1}}></View>
                 <Text style={styles.buttonText}> REFINE </Text>
             </View>
