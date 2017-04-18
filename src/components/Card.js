@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, Dimensions, Text, TouchableHighlight} from 'react-native';
-import {darkText, lightText, extraLightBackground} from '../AsosColors'
+import {darkText, lightText, extraLightBackground, darkBackground} from '../AsosColors'
 import Icons from '../TabbarIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const {width, height} = Dimensions.get('window');
 const PADDING = 10;
@@ -36,7 +37,7 @@ renderCardWithPrice(price, subtitle) {
                 <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
                 <View style={{justifyContent:'space-between', flexDirection:'row'}}>
                     <Text style={styles.price}> {price} </Text>
-                    <Image style={{height:25, width:25, resizeMode:'contain', marginHorizontal:10,}} source={{uri:Icons.likeIcon} } />
+                    <Icon.Button style={{padding:0}}name="heart-outline" size={25} color={darkBackground}  backgroundColor="transparent"/>
                 </View>
                 <Text style={styles.subTitlePrice}> {subtitle} </Text>
             </View>
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
         color:lightText,
         width:(width/2) - PADDING*2 - PADDING,
     },
-        price:{
+    price:{
         fontFamily:'futura',
         fontSize:16,
         fontWeight:"600",

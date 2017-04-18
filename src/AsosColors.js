@@ -11,5 +11,6 @@ module.exports = {
     purple: '#rgba(155, 89, 182,1.0)',
     red: '#rgba(231, 76, 60,1.0)',
     orange: '#rgba(241, 196, 15,1.0)',
+    emerald: '#rgba(39, 174, 96,1.0)',
     activeColor:'#rgba(189, 195, 199,1.0)'
 };
