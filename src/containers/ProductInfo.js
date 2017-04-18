@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity, Text } from 'react-native';
 import {lightBackground, extraLightBackground,darkBackground, darkText, lightText, emerald} from '../AsosColors';
+import {buttonWithText} from '../components/Button'
 import Card from '../components/Card'
 import NavBar from '../components/NavBar'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -57,9 +58,14 @@ export default class ProductInfo extends Component {
                             <Text style={styles.basketButtonText}> ADD TO BAG </Text>
                         </Icon.Button>
 
-                        <View style={styles.productDescription}>
-                            <Text style={styles.list}> Product information </Text>
-                            <Text style={styles.list}> Free delivery & returns </Text>
+                        <View style={styles.productInfo}>
+                            <View style={{backgroundColor:lightBackground, alignSelf:'stretch', borderBottomWidth: 1,borderColor: extraLightBackground,}}>
+                                <Text style={styles.list}> Product information </Text>
+                            </View>
+                            <View style={{backgroundColor:lightBackground, alignSelf:'stretch', borderBottomWidth: 1,borderColor: extraLightBackground,}}>
+                                <Text style={styles.list}> Free delivery & returns </Text>
+                            </View>
+                            
                             <Text style={styles.list}> Size guide </Text>
                         </View>
                 </ScrollView>
@@ -78,18 +84,9 @@ export default class ProductInfo extends Component {
     actionButtonGroup() {
         return (
             <View style={styles.buttonGroup}>
-                <View style={{flexDirection:'column', width:55, justifyContent:'center', alignItems:'center'}}>
-                    <Icon.Button name="heart-outline" size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
-                    <Text style={styles.buttonText}> SAVE </Text>
-                </View>
-                <View style={{flexDirection:'column', width:55, justifyContent:'center', alignItems:'center'}}>
-                    <Icon.Button name="play" size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
-                    <Text style={styles.buttonText}> VIDEO </Text>
-                </View>
-                <View style={{flexDirection:'column', width:55, justifyContent:'center', alignItems:'center'}}>
-                    <Icon.Button name="share-variant" size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
-                    <Text style={styles.buttonText}> SHARE </Text>
-                </View>
+                {buttonWithText('heart-outline', 'SAVE')}
+                {buttonWithText('play', "VIDEO")}
+                {buttonWithText('share-variant', "SHARE")}
             </View>
         );
     }
@@ -178,15 +175,21 @@ subTitle:{
         color: 'white',
         paddingVertical:5,
     },
+    productInfo:{
+        alignSelf:'stretch', 
+        margin:20,
+        paddingBottom:20,
+        borderColor: extraLightBackground,
+    },
     list:{
         fontFamily: 'futura',
         fontSize: 20,
-        fontWeight: "200",
+        fontWeight: "100",
         textAlign: 'left',
         color: darkText,
-        marginVertical:20,
+        marginVertical:10,
         borderBottomWidth: 1,
-        borderColor: 'red',
+        borderColor: extraLightBackground,
 
     },
 });
