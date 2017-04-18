@@ -1,19 +1,14 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Dimensions, TouchableOpacity, Image, Text} from 'react-native';
 import {lightBackground, extraLightBackground, darkText} from '../AsosColors';
+import Button from './Button'
 const {width, height} = Dimensions.get('window');
 
 export default class NavBar extends Component {
     render() {
         return (
             <View style={styles.navigationBar}>
-                <TouchableOpacity activeOpacity={0.8} underlayColor={extraLightBackground} onPress={()=> this.onBackButtonPressed()}>
-                <Image
-                    style={styles.backButton}
-                    source={{
-                    uri: backButtonImage
-                }}/>
-                </TouchableOpacity>
+                <Button type={'Icon'} title="hidden" icon={'keyboard-backspace'}/>
                 <Text style={styles.title}> {this.props.title} </Text>
             </View>
 

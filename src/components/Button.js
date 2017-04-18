@@ -17,12 +17,25 @@ export default class Button extends React.Component {
     };
 
     render(){
-        return(
-            <View style={{justifyContent:'center', alignItems:'stretch'}}>
-                <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
-                <Text style={styles.buttonText}> {this.props.title} </Text>
-            </View>
-        )
+        let content;
+        if (this.props.type === 'IconText'){
+            content = (
+                <View style={{justifyContent:'center', alignItems:'stretch'}}>
+                    <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
+                    <Text style={styles.buttonText}> {this.props.title} </Text>
+                </View>
+            );
+
+        }else if (this.props.type === 'Icon'){
+            content = (
+                 <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
+            );
+
+        }else {
+            content = (<Text style={styles.buttonText}> {this.props.title} </Text>);
+        }
+
+        return(content)
     }
 }
 

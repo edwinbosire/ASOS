@@ -30,10 +30,10 @@ export default class ProductInfo extends Component {
         return (
             <View style={styles.container}>
                 <View style={{position:'absolute', left:10, top:20, zIndex:2}}>
-                    <Icon.Button style={{ backgroundColor:'transparent'}} name="keyboard-backspace" size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
+                    <Button type='Icon' icon={'keyboard-backspace'} onPress={this.onBackButtonPressed}/>
                 </View>
                 <ScrollView contentContainerStyle={{ alignItems:'center'}} showsVerticalScrollIndicator={false}>
-                    <View style={{height:480, width:width}}>
+                    <View style={{height:480, width:width, marginTop:-20}}>
                      <ViewPager 
                         style={{ }}
                         dataSource={this.dataSource.cloneWithPages(IMGS)}
