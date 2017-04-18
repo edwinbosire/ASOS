@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity, Text } from 'react-native';
 import {lightBackground, extraLightBackground,darkBackground, darkText, lightText, emerald} from '../AsosColors';
-import {buttonWithText} from '../components/Button'
+import Button from '../components/Button'
 import Card from '../components/Card'
 import NavBar from '../components/NavBar'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -84,9 +84,9 @@ export default class ProductInfo extends Component {
     actionButtonGroup() {
         return (
             <View style={styles.buttonGroup}>
-                {buttonWithText('heart-outline', 'SAVE')}
-                {buttonWithText('play', "VIDEO")}
-                {buttonWithText('share-variant', "SHARE")}
+                {<Button icon={'heart-outline'} title={'SAVE'} />}
+                {<Button icon={'play'} title={'VIDEO'} />}
+                {<Button icon={'share-variant'} title={'SHARE'} />}
             </View>
         );
     }

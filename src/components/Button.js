@@ -1,3 +1,5 @@
+'use strict'
+
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -5,13 +7,23 @@ import {lightBackground, extraLightBackground,darkBackground, darkText, lightTex
 const {width, height} = Dimensions.get('window');
 
 
-function buttonWithText(icon, text) {
-    return (
-        <View style={{justifyContent:'center', alignItems:'stretch'}}>
-            <Icon.Button style={{alignSelf:'center', margin:0}} name={icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
-            <Text style={styles.buttonText}> {text} </Text>
-        </View>
-    )
+export default class Button extends React.Component {
+    props: {
+        type: 'text' | 'Icon' | 'IconText';
+        icon?: string;
+        title: string;
+        style?: any;
+        onPress: () => mixed
+    };
+
+    render(){
+        return(
+            <View style={{justifyContent:'center', alignItems:'stretch'}}>
+                <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
+                <Text style={styles.buttonText}> {this.props.title} </Text>
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -58,5 +70,3 @@ const styles = StyleSheet.create({
     }
 
 });
-
-module.exports = {buttonWithText}
