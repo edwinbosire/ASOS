@@ -35,8 +35,6 @@ If you fork this project, feel free to extend the following features.
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 
 
- ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase%402x.png)
-
 ## Getting Started
 
 - Clone the app
