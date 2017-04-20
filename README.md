@@ -1,4 +1,4 @@
- ![Banner image](https://cdn-images-1.medium.com/max/1200/1*uQ2duH__tzNQLX3QNemGHg.png)
+ ![Banner image](https://github.com/edwinbosire/ASOS/raw/master/ASOS%20BANNER.png)
 
 
 # ASOS
@@ -9,23 +9,34 @@ It is platform agnostic although nearly all work done so far has been written an
 
 React-Native is a powerful tool for creating UI, and therefore i've focussed only on the UI. The business logic including data retrieval is ommitted from this project.
 
-# FEATURES
+## FEATURES
 
--[x] Dynamic Home Page
--[x] Category Listing
--[x] Product List
--[x] Product Info (limited functionality
--[ ] Basket
--[ ] Favourites
--[ ] Account
+- [x] Dynamic Home Page
+- [x] Category Listing
+- [x] Product List
+- [x] Product Info (limited functionality
+- [ ] Basket
+- [ ] Favourites
+- [ ] Account
 
-# 3rd Party Libraries used
+#### LEFT OUT
+
+If you fork this project, feel free to extend the following features.
+
+- API Services
+- Basket management
+- Recently Viewed Objects
+- Account information
+
+## 3rd Party Libraries used
 
 - [React Native Router Flux](https://github.com/aksonov/react-native-router-flux)  (Highly recommended)
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 
 
-# Getting Started
+ ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase.png)
+
+## Getting Started
 
 - Clone the app
 
@@ -60,21 +71,21 @@ Node comes with npm, you can use Yarn if you prefer or any other package manager
 Get Xcode from the [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 
 
-# Deployment
+## Deployment
 
 TODO:
 
 
-# Contributing
+## Contributing
 
 Just fork the repo and do your thing.
 
-# Authors
+## Authors
 - [ME 😀](www.twitter.com/edwinbosire) - 
 
 - The Internet - Shout out to [StackOverflow](http://stackoverflow.com/questions/tagged/react-native) and the ReactNative [documentation](https://facebook.github.io/react-native/versions.html).
 
-# License
+## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
