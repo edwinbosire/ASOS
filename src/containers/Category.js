@@ -3,12 +3,13 @@ import { StyleSheet, View, Image, Dimensions, ScrollView } from 'react-native';
 import {lightBackground, extraLightBackground} from '../AsosColors';
 import Card from '../components/Card'
 import NavBar from '../components/NavBar'
+import { Actions } from 'react-native-router-flux';
 
 export default class Category extends Component { 
     render() {
         return (
             <View style={styles.container}>
-                <NavBar />
+                <NavBar onBackPress={() => Actions.pop()} />
                 <ScrollView style={{paddingHorizontal:10}} showsVerticalScrollIndicator={false}>
 
                     <Card type='standard' source={salesBanner}/>

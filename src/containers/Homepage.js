@@ -10,22 +10,32 @@ import {
 import {lightBackground} from '../AsosColors';
 import Card from '../components/Card'
 import Header from '../components/RecentHeader'
-
+import {getHomePageData} from '../store/Service'
 import { Actions } from 'react-native-router-flux';
+
+var data = require('../store/Data.json');
 
 class Homepage extends Component {
     handleRouting(e) {
         Actions.productListing()
     }
 
+    constructor(props){
+        super(props)
+        this.state = {
+            raw:data,
+        }
+    }
     render() {
+        var dummy = this.getHomePageData
         return (
             <View style={styles.container}>
                 <ScrollView showsVerticalScrollIndicator={false}>
 
                     <Card type='wide' source={premiumDeliveryBanner}/>
-                    <Card type='standard' source={salesBanner} onCardPress= {Actions.productListing}/>
-                    
+                    <Card type='standard' source={salesBanner} onCardPress= {Actions.cateogryListing}/>
+                    <Card type='tall' source={newSeason} onCardPress= {Actions.cateogryListing}/>
+
                     <ScrollView scrollEnabled={false} contentContainerStyle={styles.gridView}> 
                         <Card type='grid-item' title='NEW TREND' subtitle="Camo you'll want to be seen in" source={newTrend} onCardPress= {Actions.productListing}/>
                         <Card type='grid-item' title='HOLIDAY' subtitle="Spring into summer" source={holiday} onCardPress= {Actions.productListing}/>

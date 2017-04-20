@@ -34,6 +34,7 @@ export default class AppRouter extends Component {
                             <Scene key="homepage" component={ Homepage } title="Homepage" hideNavBar={true}/>
                             <Scene key="productListing" component={ProductListPage} title="NEW IN" />
                             <Scene key="productPage" component={ ProductInfo } title="Product" />
+                            <Scene key="cateogryListing" component={ Category } title="Category" />
 
                         </Scene>
                         

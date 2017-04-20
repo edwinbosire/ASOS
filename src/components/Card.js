@@ -1,3 +1,9 @@
+/*
+
+Defines all the card views used in the ASOS app
+Suggested Improvements: Utilize type to render appropriate card instead of title & price
+*/
+
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, Dimensions, Text, TouchableHighlight} from 'react-native';
 import {darkText, lightText, extraLightBackground, darkBackground} from '../AsosColors'
@@ -80,24 +86,24 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     promotionBanner: {
-        width:width - PADDING*2,
-        height: 70,
-        resizeMode:'contain'
+        alignSelf:'stretch',
+        height:75,
+        resizeMode:'cover'
     },
     standardCard: {
+        alignSelf:'stretch',
         height: 270,
-        width:width - PADDING*2,
-        resizeMode:'contain'
+        resizeMode:'cover'
     },
     tallCard: {
+        alignSelf:'stretch',
         height:450,
-        width:width - PADDING*2,
         overflow:'hidden'
     },
     standardShort: {
+        alignSelf:'stretch',
         height: 125,
-        width:width - PADDING*2,
-        resizeMode:'contain'
+        resizeMode:'contain',
     },
     gridItem: {
         height: 350,
