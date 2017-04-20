@@ -88,7 +88,7 @@ Just fork the repo and do your thing.
 
 In my past life, I used to write apps for other high street brands including [Topshop](https://itunes.apple.com/gb/app/topshop/id355683626?mt=8), [Topman](https://itunes.apple.com/gb/app/topman/id579354482?mt=8), [Burton](https://itunes.apple.com/gb/app/burton-menswear-london/id572488756?mt=8), JackWills (offline), Harrods and others I can't recall. So I've got vast experience in building withing the "app commerce" domain and it's truely unbelievable how quick developing with React-Native is.  
 
-So here's the deal, I am available for freelance work (as in after work & weekends kinda work) if you are in need of  quick dev work in React-Native, Swift or Objective-C <p><a href="mailto:me@edwinb.co.uk">let's talk</a></p>
+So here's the deal, I am available for freelance work (as in after work & weekends kinda work) if you are in need of  quick dev work in React-Native, Swift or Objective-C <a href="mailto:me@edwinb.co.uk">let's talk 📧 </a>
 
 ## License
 
