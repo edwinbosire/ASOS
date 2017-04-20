@@ -1,5 +1,6 @@
  ![Banner image](https://github.com/edwinbosire/ASOS/raw/master/ASOS%20BANNER%402x.png)
 
+ ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase%402x.png)
 
 A React Native Clone of the popular ASOS App, this project was done over one weekend for learning purposes and is theremore not being maintained. Feel free to fork and use as you please.
 
@@ -82,6 +83,12 @@ Just fork the repo and do your thing.
 - [ME 😀](www.twitter.com/edwinbosire) - 
 
 - The Internet - Shout out to [StackOverflow](http://stackoverflow.com/questions/tagged/react-native) and the ReactNative [documentation](https://facebook.github.io/react-native/versions.html).
+
+## Shameless Plug
+
+In my past life, I used to write apps for other high street brands including [Topshop](https://itunes.apple.com/gb/app/topshop/id355683626?mt=8), [Topman](https://itunes.apple.com/gb/app/topman/id579354482?mt=8), [Burton](https://itunes.apple.com/gb/app/burton-menswear-london/id572488756?mt=8), JackWills (offline), Harrods and others I can't recall. So I've got vast experience in building withing the "app commerce" domain and it's truely unbelievable how quick developing with React-Native is.  
+
+So here's the deal, I am available for freelance work (as in after work & weekends kinda work) if you are in need of  quick dev work in React-Native, Swift or Objective-C <p><a href="mailto:me@edwinb.co.uk">let's talk</a></p>
 
 ## License
 
