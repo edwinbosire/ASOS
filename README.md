@@ -2,6 +2,7 @@
 
  ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase%402x.png)
 
+##### *** This is work in progress ****
 A React Native Clone of the popular ASOS App, this project was done over one weekend for learning purposes and is theremore not being maintained. Feel free to fork and use as you please.
 
 It is platform agnostic although nearly all work done so far has been written and tested on iOS.
@@ -26,6 +27,7 @@ If you fork this project, feel free to extend the following features.
 - Basket management
 - Recently Viewed Objects
 - Account information
+- No Tests! I like living dangerously
 
 ## 3rd Party Libraries used
 
@@ -69,6 +71,25 @@ Node comes with npm, you can use Yarn if you prefer or any other package manager
 
 Get Xcode from the [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 
+## Structure
+```
+.
+├── tests
+├── Android
+├── ios
+├── node_modules
+├── src
+    ├── components  <== All the "dumb" ui widgets go here**
+    ├── containers <=== top level views akin to viewcontrollers**
+    ├── img   <== should be renamed to assets, might copy videos here
+    ├── services  <== dummy data classes, to be expanded in the future
+    └── store <== Data dump from ASOS API
+    
+```
+
+All the interesting things are within the components and containers group. 
+
+The iOS app utilises the `AppRouter.js` file for ALL navigation, we implement the tabbar from here and use [React Native Router Flux](https://github.com/aksonov/react-native-router-flux) to get shit done. This library saved a tonne of work usually associated with rolling out your own Navigator + Redux setup.
 
 ## Deployment
 
