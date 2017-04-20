@@ -1,7 +1,5 @@
- ![Banner image](https://github.com/edwinbosire/ASOS/raw/master/ASOS%20BANNER.png)
+ ![Banner image](https://github.com/edwinbosire/ASOS/raw/master/ASOS%20BANNER%402x.png)
 
-
-# ASOS
 
 A React Native Clone of the popular ASOS App, this project was done over one weekend for learning purposes and is theremore not being maintained. Feel free to fork and use as you please.
 
@@ -34,7 +32,7 @@ If you fork this project, feel free to extend the following features.
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 
 
- ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase.png)
+ ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase%402x.png)
 
 ## Getting Started
 
