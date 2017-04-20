@@ -4,13 +4,15 @@ import {lightBackground, extraLightBackground, lightText} from '../AsosColors';
 import Card from '../components/Card'
 import NavBar from '../components/NavBar'
 import ActionBar from '../components/ActionBar'
+import { Actions } from 'react-native-router-flux';
+
 const {width, height} = Dimensions.get('window');
 
 export default class ProductListPage extends Component { 
     render() {
         return (
             <View style={styles.container}>
-                <NavBar title="NEW IN:CLOTHING"/>
+                <NavBar title="NEW IN:CLOTHING" onBackPress={() => Actions.pop()}/>
                 <ScrollView contentContainerStyle={styles.gridView} showsVerticalScrollIndicator={false}> 
                     <ActionBar />
                     <Text style={styles.resultsCount}> 1,234 styles found </Text>

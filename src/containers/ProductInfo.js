@@ -6,6 +6,8 @@ import Card from '../components/Card'
 import NavBar from '../components/NavBar'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ViewPager from 'react-native-viewpager';
+import { Actions } from 'react-native-router-flux';
+
 const {width, height} = Dimensions.get('window');
 const myIcon = (<Icon name="rocket" size={30} color="#900" />)
 const PADDING = 10;
@@ -79,14 +81,17 @@ export default class ProductInfo extends Component {
             <Image style={{width:width, height:480, resizeMode:'cover'}} source={{uri:data}} />                    
         )
     }
-    onBackButtonPressed(){    }
+    onBackButtonPressed(){  
+        console.log("pop back")
+        Actions.pop()
+      }
 
     actionButtonGroup() {
         return (
             <View style={styles.buttonGroup}>
-                {<Button icon={'heart-outline'} title={'SAVE'} />}
-                {<Button icon={'play'} title={'VIDEO'} />}
-                {<Button icon={'share-variant'} title={'SHARE'} />}
+                {<Button type={'IconText'} icon={'heart-outline'} title={'SAVE'} />}
+                {<Button type={'IconText'} icon={'play'} title={'VIDEO'} />}
+                {<Button type={'IconText'} icon={'share-variant'} title={'SHARE'} />}
             </View>
         );
     }
@@ -118,6 +123,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'center',
         paddingVertical:20,
+        marginTop:20,
         borderBottomWidth: 1,
         borderColor: extraLightBackground,
 

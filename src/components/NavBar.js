@@ -8,7 +8,7 @@ export default class NavBar extends Component {
     render() {
         return (
             <View style={styles.navigationBar}>
-                <Button type={'Icon'} title="hidden" icon={'keyboard-backspace'}/>
+                <Button type={'Icon'} icon={'keyboard-backspace'} onPress={this.props.onBackPress}/>
                 <Text style={styles.title}> {this.props.title} </Text>
             </View>
 

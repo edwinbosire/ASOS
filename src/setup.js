@@ -25,24 +25,14 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-import TabbarView from './Tabbar'
+import Router from './AppRouter'
 
 function setup() {
-    console.disableYellowBox = true;
     class Root extends Component {
-
-        constructor() {
-            super();
-            this.state = {
-                isLoading: true
-            };
-        }
         render() {
-            return (<Tabbar/>);
+            return (<Router />);
         }
     }
-
     return Root;
 }
 

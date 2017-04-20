@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity, TouchableHighlight, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {lightBackground, extraLightBackground,darkBackground, darkText, lightText, emerald} from '../AsosColors';
 const {width, height} = Dimensions.get('window');
@@ -20,15 +20,18 @@ export default class Button extends React.Component {
         let content;
         if (this.props.type === 'IconText'){
             content = (
+        
+        <TouchableOpacity activeOpacity={0.8} underlayColor={extraLightBackground} onPress={() =>  console.log("pressed icon+text")}>
                 <View style={{justifyContent:'center', alignItems:'stretch'}}>
-                    <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
+                    <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={() =>  console.log("pressed icon+text button")} />
                     <Text style={styles.buttonText}> {this.props.title} </Text>
                 </View>
+        </TouchableOpacity>
             );
 
         }else if (this.props.type === 'Icon'){
             content = (
-                 <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.onBackButtonPressed}/>
+                 <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.props.onPress}/>
             );
 
         }else {

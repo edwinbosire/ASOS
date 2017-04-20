@@ -20,7 +20,7 @@ export default class Card extends Component {
 
 renderCardWithTitle(title, subtitle) {
     return(
-        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
+        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={this.props.onCardPress}>
             <View style={{height:350, backgroundColor:'white'}}>
                 <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
                 <Text style={styles.title}> {title} </Text>
@@ -32,7 +32,7 @@ renderCardWithTitle(title, subtitle) {
 
 renderCardWithPrice(price, subtitle) {
     return(
-        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
+        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={this.props.onCardPress}>
             <View style={{height:320, backgroundColor:'white'}}>
                 <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
                 <View style={{justifyContent:'space-between', flexDirection:'row'}}>
@@ -47,15 +47,12 @@ renderCardWithPrice(price, subtitle) {
 
 renderStandard(){
     return(
-        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={()=> this.onCardPressed()}>
+        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground} onPress={this.props.onCardPress}>
             <Image style={this.styleForType(this.props.type)} source={{uri: this.props.source}}/>
         </TouchableHighlight>
     )
 }
 
-onCardPressed(){
-
-}
     styleForType(type) {
         switch (type) {
             case 'wide':

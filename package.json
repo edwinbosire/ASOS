@@ -10,6 +10,7 @@
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.3",
     "react-native-fit-image": "^1.4.8",
+    "react-native-router-flux": "^3.38.0",
     "react-native-vector-icons": "^4.0.1",
     "react-native-viewpager": "^0.2.13"
   },
