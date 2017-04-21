@@ -3,6 +3,7 @@ import {StyleSheet, View, Text, Image, ListView, Dimensions, TouchableHighlight}
 import Color from '../AsosColors';
 import NavBar from '../components/NavBar'
 import Service from '../store/Service'
+import { Actions } from 'react-native-router-flux';
 
 const {width, height} = Dimensions.get('window');
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -23,7 +24,7 @@ class Basket extends Component {
 
    renderRows(data){
         return ( 
-            <TouchableHighlight activeOpacity={0.8} underlayColor={Color.extraLightBackground}onPress={() => (data.title)?Actions.productListing(data) : Actions.cateogryListing(data)}>
+            <TouchableHighlight activeOpacity={0.8} underlayColor={Color.extraLightBackground}onPress={() => (data.title)?Actions.productListing(data) : Actions.productPage(data)}>
                 
                 <View style={styles.row}>  
                     <Image style={{ height:(width/2 ), width:145, alignSelf:'stretch', resizeMode:'cover'}} source={{uri: data.images[0].url}} />
