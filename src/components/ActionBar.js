@@ -39,8 +39,8 @@ export default class ActionBar extends Component {
         Animated.timing(
             this.state.leftOffset, { 
                 toValue: value,
-                easing: Easing.elastic(1),
-                duration: 250,
+                easing: Easing.elastic(1.3),
+                duration: 550,
             }
         ).start()
     }

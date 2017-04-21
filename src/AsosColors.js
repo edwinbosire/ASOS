@@ -1,4 +1,5 @@
 module.exports = {
+    white: 'white',
     actionText: '#3FB4CF',
     inactiveText: '#9B9B9B',
     darkText: '#032250',

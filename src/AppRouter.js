@@ -28,7 +28,7 @@ export default class AppRouter extends Component {
         return (
             <Router>
                 <Scene key="root"> 
-                    <Scene key="tabbar" tabs={true}  default="search" tabBarStyle={{backgroundColor: Color.lightBackground, borderTopColor:Color.extraLightBackground, borderTopWidth:1}}>
+                    <Scene key="tabbar" tabs={true}  default="search_tab" tabBarStyle={{backgroundColor: Color.lightBackground, borderTopColor:Color.extraLightBackground, borderTopWidth:1}}>
                         {/*Tab and it's scenes */}
                         <Scene key = "homepage_tab" icon={() => this.tabIcon(Icons.homeIcon)} >
                             <Scene key="homepage" component={ Homepage } title="Homepage" hideNavBar={true}/>

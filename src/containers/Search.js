@@ -4,10 +4,10 @@ import Color from '../AsosColors';
 import Card from '../components/Card';
 import { Actions } from 'react-native-router-flux';
 import ActionBar from '../components/ActionBar'
+import Service from '../store/Service'
 
 const {width, height} = Dimensions.get('window');
 
-var Service = require('../store/Service')
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
@@ -77,7 +77,7 @@ class Search extends Component {
                             onChangeText={(text) => this.searchForTerm(text)}
                         />  
                 </View>
-                <ActionBar style={{marginHorizontal:10}} firstButtonText={'WOMEN'} secondButtonText={'MEN'} onButtonSelect={(e) => this.buttonSelected(e)} />
+                <ActionBar style={{marginHorizontal:10}} defaultSelection={'MALE'} firstButtonText={'WOMEN'} secondButtonText={'MEN'} onButtonSelect={(e) => this.buttonSelected(e)} />
                <ListView contentContainerStyle = {styles.gridView}
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) => this.renderRows({...rowData})}

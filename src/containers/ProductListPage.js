@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Dimensions, ScrollView, Text } from 'react-native';
-import {lightBackground, extraLightBackground, lightText} from '../AsosColors';
+import Color from '../AsosColors';
 import Card from '../components/Card'
 import NavBar from '../components/NavBar'
 import ActionBar from '../components/ActionBar'
@@ -34,7 +34,7 @@ export default class ProductListPage extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: lightBackground,
+        backgroundColor: Color.lightBackground,
         paddingTop: 20,
         justifyContent: 'center',
         alignItems: 'center'
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "100",
         textAlign: 'center',
-        color: lightText,
+        color: Color.lightText,
         paddingVertical:10,
         width:width,
     }

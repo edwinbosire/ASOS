@@ -28,7 +28,24 @@ var service = {
                 });
         return data;
 
+    },
+
+    getBagItems() {
+        let raw_data = require('./Basket.json')
+        return raw_data.products;
+    },
+
+    getBagTotal(){
+        let raw_data = require('./Basket.json')
+        var sum = raw_data.products.reduce(function(a, b){
+            
+            return a + b.price.current.value;
+        }, 0);
+
+        return sum;
     }
+
+    
 }
 module.exports = service;
 
