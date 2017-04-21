@@ -26,6 +26,9 @@ class Homepage extends Component {
             raw:data,
         }
     }
+    createGridItem(item){
+       return <Card key={item.id} type='grid-item' price={item.price} subtitle={item.subtitle} source={item.image} onCardPress= {Actions.productPage}/>
+    }
     render() {
         var dummy = this.getHomePageData
         return (
@@ -50,21 +53,29 @@ class Homepage extends Component {
                     <Header />
                     
                     <ScrollView horizontal={true} contentContainerStyle={styles.recentView}> 
-                        <Card type='grid-item' price='£35.00' subtitle="ASOS light camo jacket" source={newTrend} onCardPress= {Actions.productPage}/>
-                        <Card type='grid-item' price='£55.0' subtitle="Spring into summer" source={holiday} onCardPress= {Actions.productPage}/>
-                        <Card type='grid-item' price='£67.50' subtitle="Pump up, look sharp" source={activeWear} onCardPress= {Actions.productPage}/>
-                        <Card type='grid-item' price='£10.00' subtitle="Sharp gear for any occasion" source={suitGuide} onCardPress= {Actions.productPage}/> 
+                        {recentlyViewed.map((item) => this.createGridItem(item))}
+
                     </ScrollView>
 
                 </ScrollView>
             </View>
         );
     }
-
+    
     presentSales(){
 
     }
 }
+
+const recentlyViewed = [
+    {id:0, price:'£35.00', subtitle:'Brave Soul Skinny Jeans', image:'http://images.asos-media.com/products/brave-soul-skinny-jeans/7384621-1-green?$XXL$&wid=513&fit=constrain'},
+    {id:1, price:'£55.00', subtitle:'Spring into summer', image:'http://content.asos-media.com/~/media/210317114653en-GB/mw-homepage/2017/April/03/springbreak-app-02.jpg'},
+    {id:2, price:'90.00', subtitle:'ASOS light camo jacket', image:'http://content.asos-media.com/~/media/060417052531en-GB/mw-homepage/2017/April/11/1146x1496-newness-(2).jpg'},
+    {id:3, price:'11.50', subtitle:'Another Influence PLUS Tropical Palm Pocket Vest', image:'http://images.asos-media.com/products/another-influence-plus-tropical-palm-pocket-vest/7796744-1-blue?$XXL$&wid=513&fit=constrain'},
+    {id:4, price:'15.00', subtitle:'French Connection Henley T-Shirt', image:'http://images.asos-media.com/products/french-connection-henley-t-shirt/7742330-1-black?$XXL$&wid=513&fit=constrain'}
+]
+
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,

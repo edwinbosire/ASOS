@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
         fontFamily:'futura',
         fontSize:16,
         fontWeight:"200",
-        textAlign: 'center',
         paddingHorizontal:10,
         color:lightText,
     },
