@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
         flexWrap:'wrap',
         alignItems: 'flex-start',
         justifyContent:'space-around',
-        paddingHorizontal:10,
     },
     resultsCount: {
         fontFamily: 'futura',
