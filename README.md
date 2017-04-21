@@ -1,8 +1,8 @@
- ![Banner image](https://github.com/edwinbosire/ASOS/raw/master/ASOS%20BANNER.png)
+ ![Banner image](https://github.com/edwinbosire/ASOS/raw/master/ASOS%20BANNER%402x.png)
 
+ ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase%402x.png)
 
-# ASOS
-
+##### *** This is work in progress ****
 A React Native Clone of the popular ASOS App, this project was done over one weekend for learning purposes and is theremore not being maintained. Feel free to fork and use as you please.
 
 It is platform agnostic although nearly all work done so far has been written and tested on iOS.
@@ -27,14 +27,13 @@ If you fork this project, feel free to extend the following features.
 - Basket management
 - Recently Viewed Objects
 - Account information
+- No Tests! I like living dangerously
 
 ## 3rd Party Libraries used
 
 - [React Native Router Flux](https://github.com/aksonov/react-native-router-flux)  (Highly recommended)
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 
-
- ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase.png)
 
 ## Getting Started
 
@@ -70,6 +69,25 @@ Node comes with npm, you can use Yarn if you prefer or any other package manager
 
 Get Xcode from the [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 
+## Structure
+```
+.
+├── tests
+├── Android
+├── ios
+├── node_modules
+├── src
+    ├── components  <== All the "dumb" ui widgets go here**
+    ├── containers <=== top level views akin to viewcontrollers**
+    ├── img   <== should be renamed to assets, might copy videos here
+    ├── services  <== dummy data classes, to be expanded in the future
+    └── store <== Data dump from ASOS API
+    
+```
+
+All the interesting things are within the components and containers group. 
+
+The iOS app utilises the `AppRouter.js` file for ALL navigation, we implement the tabbar from here and use [React Native Router Flux](https://github.com/aksonov/react-native-router-flux) to get shit done. This library saved a tonne of work usually associated with rolling out your own Navigator + Redux setup.
 
 ## Deployment
 
@@ -84,6 +102,12 @@ Just fork the repo and do your thing.
 - [ME 😀](www.twitter.com/edwinbosire) - 
 
 - The Internet - Shout out to [StackOverflow](http://stackoverflow.com/questions/tagged/react-native) and the ReactNative [documentation](https://facebook.github.io/react-native/versions.html).
+
+## Shameless Plug
+
+In my past life, I used to write apps for other high street brands including [Topshop](https://itunes.apple.com/gb/app/topshop/id355683626?mt=8), [Topman](https://itunes.apple.com/gb/app/topman/id579354482?mt=8), [Burton](https://itunes.apple.com/gb/app/burton-menswear-london/id572488756?mt=8), JackWills (offline), Harrods and others I can't recall. So I've got vast experience in building withing the "app commerce" domain and it's truely unbelievable how quick developing with React-Native is.  
+
+So here's the deal, I am available for freelance work (as in after work & weekends kinda work) if you are in need of  quick dev work in React-Native, Swift or Objective-C <a href="mailto:me@edwinb.co.uk">let's talk 📧 </a>
 
 ## License
 
