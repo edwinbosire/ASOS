@@ -40,6 +40,8 @@ export default class AppRouter extends Component {
                         
                         <Scene key = "search_tab" title="" icon={() => this.tabIcon(Icons.searchIcon)} hideNavBar={true}>
                             <Scene key="search" component={ProductListPage} title="Search" />
+                            <Scene key="productInfo" component={ ProductInfo } title="Product" />
+
                         </Scene>
 
                         <Scene key = "bag_tab" title="" icon={() => this.tabIcon(Icons.bagIcon)} hideNavBar={true}>

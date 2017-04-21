@@ -16,10 +16,10 @@ export default class ProductListPage extends Component {
                 <ScrollView contentContainerStyle={styles.gridView} showsVerticalScrollIndicator={false}> 
                     <ActionBar />
                     <Text style={styles.resultsCount}> 1,234 styles found </Text>
-                    <Card type='grid-item' price='£35.00' subtitle="ASOS light camo jacket" source={newTrend}/>
-                    <Card type='grid-item' price='£55.0' subtitle="Spring into summer" source={holiday}/>
-                    <Card type='grid-item' price='£67.50' subtitle="Pump up, look sharp" source={activeWear}/>
-                    <Card type='grid-item' price='£10.00' subtitle="Sharp gear for any occasion" source={suitGuide}/> 
+                    <Card type='grid-item' price='£35.00' subtitle="ASOS light camo jacket" source={newTrend} onCardPress= {Actions.productInfo}/>
+                    <Card type='grid-item' price='£55.0' subtitle="Spring into summer" source={holiday} onCardPress= {Actions.productInfo}/>
+                    <Card type='grid-item' price='£67.50' subtitle="Pump up, look sharp" source={activeWear} onCardPress= {Actions.productInfo}/>
+                    <Card type='grid-item' price='£10.00' subtitle="Sharp gear for any occasion" source={suitGuide} onCardPress= {Actions.productInfo}/> 
                 </ScrollView>
             </View>   
          );
