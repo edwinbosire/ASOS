@@ -28,28 +28,27 @@ export default class AppRouter extends Component {
         return (
             <Router>
                 <Scene key="root"> 
-                    <Scene key="tabbar" tabs={true} intial={true} default="homepage_tab" tabBarStyle={{backgroundColor: Color.lightBackground, borderTopColor:Color.extraLightBackground, borderTopWidth:1}}>
+                    <Scene key="tabbar" tabs={true}  default="search" tabBarStyle={{backgroundColor: Color.lightBackground, borderTopColor:Color.extraLightBackground, borderTopWidth:1}}>
                         {/*Tab and it's scenes */}
                         <Scene key = "homepage_tab" icon={() => this.tabIcon(Icons.homeIcon)} >
                             <Scene key="homepage" component={ Homepage } title="Homepage" hideNavBar={true}/>
-                            <Scene key="productListing" component={ProductListPage} title="NEW IN" />
-                            <Scene key="productPage" component={ ProductInfo } title="Product" />
-                            <Scene key="cateogryListing" component={ Category } title="Category" />
+                            <Scene key="productListing" clone={true} component={ProductListPage} title="" />
+                            <Scene key="productPage" clone={true} component={ ProductInfo } title="" />
+                            <Scene key="cateogryListing" clone={true} component={ Category } title="" />
+                            <Scene key="productInfo" clone={true} component={ ProductInfo } title="" />     
 
                         </Scene>
                         
-                        <Scene key = "search_tab" title="" icon={() => this.tabIcon(Icons.searchIcon)} hideNavBar={true}>
-                            <Scene key="search" component={ProductListPage} title="Search" />
-                            <Scene key="productInfo" component={ ProductInfo } title="Product" />
-
+                        <Scene key = "search_tab" title="" intial={true} icon={() => this.tabIcon(Icons.searchIcon)} hideNavBar={true}>
+                            <Scene key="search" component={Search} title="Search" />
                         </Scene>
 
                         <Scene key = "bag_tab" title="" icon={() => this.tabIcon(Icons.bagIcon)} hideNavBar={true}>
-                            <Scene key="bag" component={ Category } title="Basket" />
+                            <Scene key="bag" component={ Basket } title="Basket" />
                         </Scene>
 
                         <Scene key = "favourites_tab" title="" icon={() => this.tabIcon(Icons.favorites)} hideNavBar={true}>
-                            <Scene key="favourites" component={ ProductInfo } title="Favourites" />
+                            <Scene key="favourites" component={ Favourites } title="Favourites" />
                         </Scene>
 
                         <Scene key = "profile_tab" title="" icon={() => this.tabIcon(Icons.userIcon)} hideNavBar={true}>

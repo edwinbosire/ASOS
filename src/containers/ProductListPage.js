@@ -9,10 +9,15 @@ import { Actions } from 'react-native-router-flux';
 const {width, height} = Dimensions.get('window');
 
 export default class ProductListPage extends Component { 
+
+    constructor(props){
+        super(props)
+        props.title = ""
+    }
     render() {
         return (
             <View style={styles.container}>
-                <NavBar title="NEW IN:CLOTHING" onBackPress={() => Actions.pop()}/>
+                <NavBar title={this.props.title.toUpperCase()} onBackPress={() => Actions.pop()}/>
                 <ScrollView contentContainerStyle={styles.gridView} showsVerticalScrollIndicator={false}> 
                     <ActionBar />
                     <Text style={styles.resultsCount}> 1,234 styles found </Text>

@@ -6,21 +6,26 @@ import NavBar from '../components/NavBar'
 import { Actions } from 'react-native-router-flux';
 
 export default class Category extends Component { 
+
+    constructor(props){
+        super(props)
+        props.title = " "
+    }
     render() {
         return (
             <View style={styles.container}>
-                <NavBar onBackPress={() => Actions.pop()} />
+                <NavBar title={this.props.title.toUpperCase()} onBackPress={() => Actions.pop()} />
                 <ScrollView style={{paddingHorizontal:10}} showsVerticalScrollIndicator={false}>
 
                     <Card type='standard' source={salesBanner}/>
                     
                     <ScrollView scrollEnabled={false} contentContainerStyle={styles.gridView}> 
-                        <Card type='grid-item' title='JACKETS & COATS' subtitle="Win at winter" source={jacketsCoats}/>
-                        <Card type='grid-item' title='SHOES, BOOTS & TRAINERS' subtitle="From adidas sneaks to Dr Martens" source={shoes}/>
-                        <Card type='grid-item' title='JUMPERS & CARDIGANS' subtitle="All the layers" source={jumpers}/>
-                        <Card type='grid-item' title='HOODIES & SWEATSHIRTS' subtitle="Chill everyday threads" source={hoodies}/> 
-                        <Card type='grid-item' title='JEANS' subtitle="From skinny to stonewashed" source={jeans}/> 
-                        <Card type='grid-item' title='TROUSERS & CHINOS' subtitle="Trew story" source={trousers}/> 
+                        <Card type='grid-item' title='JACKETS & COATS' subtitle="Win at winter" source={jacketsCoats} onCardPress={Actions.productListing}/>
+                        <Card type='grid-item' title='SHOES, BOOTS & TRAINERS' subtitle="From adidas sneaks to Dr Martens" source={shoes} onCardPress={Actions.productListing}/>
+                        <Card type='grid-item' title='JUMPERS & CARDIGANS' subtitle="All the layers" source={jumpers} onCardPress={Actions.productListing}/>
+                        <Card type='grid-item' title='HOODIES & SWEATSHIRTS' subtitle="Chill everyday threads" source={hoodies} onCardPress={Actions.productListing}/> 
+                        <Card type='grid-item' title='JEANS' subtitle="From skinny to stonewashed" source={jeans} onCardPress={Actions.productListing}/> 
+                        <Card type='grid-item' title='TROUSERS & CHINOS' subtitle="Trew story" source={trousers} onCardPress={Actions.productListing}/> 
 
                     </ScrollView>
 

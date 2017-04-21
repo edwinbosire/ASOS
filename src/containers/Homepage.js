@@ -54,7 +54,6 @@ class Homepage extends Component {
                     
                     <ScrollView horizontal={true} contentContainerStyle={styles.recentView}> 
                         {recentlyViewed.map((item) => this.createGridItem(item))}
-
                     </ScrollView>
 
                 </ScrollView>
