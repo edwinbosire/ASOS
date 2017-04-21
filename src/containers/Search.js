@@ -13,8 +13,8 @@ const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 class Search extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     let feed = Service.getCategories('men');
 
     this.state = {
@@ -26,14 +26,18 @@ class Search extends Component {
     };
   }
 
-    componentDidMount(){
-        this.setState = {
-            loaded: false,
-            feed: Service.getCategories(this.state.gender),
-            dataSource: ds.cloneWithRows(this.state.feed)
-        }
+    searchForTerm(text){
+        searchfeed = Service.getCategories(this.state.gender).filter(function(item) {
+            return item.title.toUpperCase().match(text.toUpperCase());
+        });
+        console.log(searchfeed.length)
+        this.setState({
+            feed: this.state.feed,
+            dataSource:  ds.cloneWithRows(searchfeed)
+        })
+
     }
-        /*<Card type='grid-item' title={data.title} subtitle={data.title} source={data.image.url} onCardPress= {Actions.productInfo}/>*/
+
 
     renderRows(data){
         return ( 
@@ -62,6 +66,7 @@ class Search extends Component {
                             autoFocus={false}
                             clearButtonMode='always'
                             keyboardShouldPersistTaps={true}
+                            onChangeText={(text) => this.searchForTerm(text)}
                         />  
                 </View>
                 <ActionBar style={{marginHorizontal:10}} firstButtonText={'WOMEN'} secondButtonText={'MEN'} />

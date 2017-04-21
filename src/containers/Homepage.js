@@ -83,15 +83,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    scrollView: {
-        backgroundColor: lightBackground,
-        padding: 20,
-        paddingTop:10,
-    },
-    containerScroll: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     gridView:{
         flexDirection:'row', 
         flexWrap:'wrap',

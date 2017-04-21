@@ -15,7 +15,7 @@ export default class Category extends Component {
         return (
             <View style={styles.container}>
                 <NavBar title={this.props.title.toUpperCase()} onBackPress={() => Actions.pop()} />
-                <ScrollView style={{paddingHorizontal:10}} showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingVertical:20}}>
 
                     <Card type='standard' source={salesBanner}/>
                     
