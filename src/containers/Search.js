@@ -38,6 +38,14 @@ class Search extends Component {
 
     }
 
+    buttonSelected(state){
+        console.log(state);
+        newFeed = Service.getCategories(state.toLowerCase())
+          this.setState({
+            feed: newFeed,
+            dataSource:  ds.cloneWithRows(newFeed)
+        })
+    }
 
     renderRows(data){
         return ( 
@@ -69,7 +77,7 @@ class Search extends Component {
                             onChangeText={(text) => this.searchForTerm(text)}
                         />  
                 </View>
-                <ActionBar style={{marginHorizontal:10}} firstButtonText={'WOMEN'} secondButtonText={'MEN'} />
+                <ActionBar style={{marginHorizontal:10}} firstButtonText={'WOMEN'} secondButtonText={'MEN'} onButtonSelect={(e) => this.buttonSelected(e)} />
                <ListView contentContainerStyle = {styles.gridView}
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) => this.renderRows({...rowData})}
