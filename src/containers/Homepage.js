@@ -30,7 +30,7 @@ class Homepage extends Component {
         var dummy = this.getHomePageData
         return (
             <View style={styles.container}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingVertical:20}}>
 
                     <Card type='wide' source={premiumDeliveryBanner}/>
                     <Card type='standard' source={salesBanner} onCardPress= {Actions.cateogryListing}/>
@@ -70,8 +70,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: lightBackground,
         paddingTop: 20,
-        paddingLeft:10,
-        paddingRight:10,
         justifyContent: 'center',
         alignItems: 'center'
     },

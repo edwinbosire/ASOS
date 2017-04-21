@@ -11,35 +11,42 @@ import Icons from '../TabbarIcons'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const {width, height} = Dimensions.get('window');
-const PADDING = 10;
+const PADDING = 20;
 
 export default class Card extends Component {
+    
     render() {
+        let content;
         if (this.props.title){
-            return this.renderCardWithTitle(this.props.title, this.props.subtitle)
+            return (this.renderCardWithTitle(this.props.title, this.props.subtitle)) //returning early to avoid styling issues presented by parent container
         }else if(this.props.price){
-            return this.renderCardWithPrice(this.props.price, this.props.subtitle)
+            content = this.renderCardWithPrice(this.props.price, this.props.subtitle)
         }else{
-            return this.renderStandard()
+            content = this.renderStandard()
         }
+        return(
+        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={this.props.onCardPress}>
+            <View style={styles.container}>
+                {content}
+            </View>
+        </TouchableHighlight>
+        )
     }
 
 renderCardWithTitle(title, subtitle) {
     return(
-        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={this.props.onCardPress}>
-            <View style={{height:350, backgroundColor:'white'}}>
-                <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
+            <View style={[styles.gridItem]}>
+                <Image style={{height:230, resizeMode:'cover'}} source={{uri: this.props.source}}/>
                 <Text style={styles.title}> {title} </Text>
                 <Text style={styles.subTitle}> {subtitle} </Text>
             </View>
-        </TouchableHighlight>
+        
     )
 }
 
 renderCardWithPrice(price, subtitle) {
     return(
-        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={this.props.onCardPress}>
-            <View style={{height:320, backgroundColor:'white'}}>
+            <View style={[styles.gridItem]}>
                 <Image style={[this.styleForType(this.props.type), {height:230, resizeMode:'center'}]} source={{uri: this.props.source}}/>
                 <View style={{justifyContent:'space-between', flexDirection:'row'}}>
                     <Text style={styles.price}> {price} </Text>
@@ -47,15 +54,12 @@ renderCardWithPrice(price, subtitle) {
                 </View>
                 <Text style={styles.subTitlePrice}> {subtitle} </Text>
             </View>
-        </TouchableHighlight>
     )
 }
 
 renderStandard(){
     return(
-        <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground} onPress={this.props.onCardPress}>
             <Image style={this.styleForType(this.props.type)} source={{uri: this.props.source}}/>
-        </TouchableHighlight>
     )
 }
 
@@ -83,11 +87,11 @@ renderStandard(){
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        margin:width*0.05,
+        marginTop:0,
     },
     promotionBanner: {
-        alignSelf:'stretch',
-        height:75,
+        height:(148/1024)* width*0.95,
         resizeMode:'cover'
     },
     standardCard: {
@@ -106,11 +110,10 @@ const styles = StyleSheet.create({
         resizeMode:'contain',
     },
     gridItem: {
-        height: 350,
-        width:(width/2) - PADDING*2 - PADDING,
-        marginTop:10,
-        marginBottom:10,
-        margin: 10,
+        width:(width/2) - PADDING*2,
+        margin:0,
+        marginBottom:20,
+        padding:0,
     },
     title:{
         fontFamily:'futura',
@@ -126,16 +129,14 @@ const styles = StyleSheet.create({
         fontWeight:"200",
         textAlign: 'center',
         color:lightText,
-        width:(width/2) - PADDING*2 - PADDING,
     },
     subTitlePrice:{
         fontFamily:'futura',
         fontSize:16,
         fontWeight:"200",
-        textAlign: 'left',
+        textAlign: 'center',
         paddingHorizontal:10,
         color:lightText,
-        width:(width/2) - PADDING*2 - PADDING,
     },
     price:{
         fontFamily:'futura',
@@ -144,35 +145,5 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         paddingLeft:10,
         color:darkText,
-        width:90,
     },
 });
-
-/**
- *
- *                     <FitImage
-                        source={{
-                        uri: saleBanner
-                    }}
-                        style={styles.saleBanner}/>
-
-                    <FitImage
-                        source={{
-                        uri: newSeason
-                    }}
-                        style={styles.saleBanner}/>
-
-                    <FitImage
-                        source={{
-                        uri: saleBanner
-                    }}
-                        style={styles.saleBanner}/>
-
-                    <FitImage
-                        source={{
-                        uri: saleBanner
-                    }}
-                        style={styles.saleBanner}/>
-
-
- */
