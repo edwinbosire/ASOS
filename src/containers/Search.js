@@ -3,6 +3,8 @@ import {StyleSheet, View, TextInput, Text, ListView, Image, Dimensions, Touchabl
 import Color from '../AsosColors';
 import Card from '../components/Card';
 import { Actions } from 'react-native-router-flux';
+import ActionBar from '../components/ActionBar'
+
 const {width, height} = Dimensions.get('window');
 
 var Service = require('../store/Service')
@@ -35,7 +37,7 @@ class Search extends Component {
 
     renderRows(data){
         return ( 
-            <TouchableHighlight activeOpacity={0.8} underlayColor={Color.extraLightBackground}onPress={() => Actions.productListing(data)}>
+            <TouchableHighlight activeOpacity={0.8} underlayColor={Color.extraLightBackground}onPress={() => (data.title)?Actions.productListing(data) : Actions.cateogryListing(data)}>
                 <View style={{marginTop:10, height:(width/2 - 15),width:(width/2 - 15), justifyContent: 'center', alignItems: 'stretch'}}>  
                     <Image style={{flex:1, resizeMode:'cover'}} source={{uri: data.image.url}}>
                         <View style ={{flex:1,alignSelf: 'stretch',  justifyContent: 'center', alignItems: 'center'}}>
@@ -50,6 +52,19 @@ class Search extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View style= {{alignSelf:'stretch',borderBottomWidth: 1,borderColor: Color.extraLightBackground}}>
+                    <TextInput style={styles.input}
+                            ref={(input) => this.searchInput = input}
+                            placeholder='Search'
+                            placeholderTextColor={Color.darkText}
+                            returnKeyType='search'
+                            autoCapitalize='sentences'
+                            autoFocus={false}
+                            clearButtonMode='always'
+                            keyboardShouldPersistTaps={true}
+                        />  
+                </View>
+                <ActionBar style={{marginHorizontal:10}} firstButtonText={'WOMEN'} secondButtonText={'MEN'} />
                <ListView contentContainerStyle = {styles.gridView}
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) => this.renderRows({...rowData})}
@@ -65,13 +80,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Color.lightBackground,
-        marginTop:20,
+        marginTop:30,
+    },
+    input: {
+        margin:10,
+        height: 40,
+        paddingHorizontal: 10,
+        backgroundColor:Color.extraLightBackground,
+        textAlign:'center',
+        fontWeight:"200",
+        fontFamily:'futura',
+        fontSize:18,
     },
     gridView:{
         flexDirection:'row', 
         flexWrap:'wrap',
-       justifyContent:'space-between',
-       marginHorizontal:10,
+        justifyContent:'space-between',
+        marginHorizontal:10,
     },
   title:{
         fontFamily:'futura',

@@ -4,12 +4,19 @@ import {darkText, extraLightBackground} from '../AsosColors';
 const {width, height} = Dimensions.get('window');
 
 export default class ActionBar extends Component { 
+
+    constructor(props){
+        super(props)
+        props.firstButtonText = "",
+        props.secondButtonText = ""
+    }
+
     render() {
         return (
-            <View style={ styles.container }>
-                <Text style={styles.buttonText}> SORT  ▼ </Text>
+            <View style={ [styles.container, {...this.props.style}] }>
+                <Text style={styles.buttonText}> {this.props.firstButtonText.toUpperCase()}</Text>
                 <View style={{backgroundColor:extraLightBackground, height:30, width:1}}></View>
-                <Text style={styles.buttonText}> REFINE </Text>
+                <Text style={styles.buttonText}> {this.props.secondButtonText.toUpperCase()} </Text>
             </View>
          );
     }

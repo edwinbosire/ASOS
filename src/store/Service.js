@@ -24,7 +24,7 @@ var service = {
         }
         let raw_data = require('./Data.json')
         let data = raw_data.asos.visualcategories[gender].filter(function(type) {
-            return (type.ios === true & type.title.length > 0)
+            return (type.ios === true & type.linkType == 'category')
                 });
         return data;
 

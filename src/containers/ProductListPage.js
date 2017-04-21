@@ -19,7 +19,7 @@ export default class ProductListPage extends Component {
             <View style={styles.container}>
                 <NavBar title={this.props.title.toUpperCase()} onBackPress={() => Actions.pop()}/>
                 <ScrollView contentContainerStyle={styles.gridView} showsVerticalScrollIndicator={false}> 
-                    <ActionBar />
+                    <ActionBar firstButtonText={'SORT  ▼ '} secondButtonText={'filter'} />
                     <Text style={styles.resultsCount}> 1,234 styles found </Text>
                     <Card type='grid-item' price='£35.00' subtitle="ASOS light camo jacket" source={newTrend} onCardPress= {Actions.productInfo}/>
                     <Card type='grid-item' price='£55.0' subtitle="Spring into summer" source={holiday} onCardPress= {Actions.productInfo}/>
