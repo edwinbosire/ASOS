@@ -1,5 +1,6 @@
-{"products":[
-            {
+{
+    "products": [
+        {
             "id": 7626355,
             "name": "ASOS PLUS Swim Shorts In Navy Mid Length",
             "price": {
@@ -233,4 +234,5 @@
             "variantItemCount": null,
             "url": "asos-asos-tapered-suit-trousers-in-navy-leaf-print-linen/prod/pgeproduct.aspx?iid=7699263&clr=charcoal"
         }
-]}
+    ]
+}

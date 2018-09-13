@@ -7,8 +7,6 @@ import ActionBar from '../components/ActionBar'
 import Service from '../store/Service'
 
 const {width, height} = Dimensions.get('window');
-
-
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 class Search extends Component {
