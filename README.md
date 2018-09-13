@@ -26,7 +26,7 @@ React-Native is a powerful tool for creating UI, and therefore i've focussed onl
 
 If you fork this project, feel free to extend the following features.
 
-- API Services
+- API Services (Images will eventually break once ASOS updates their CMS)
 - Basket management
 - Recently Viewed Objects
 - Account information
