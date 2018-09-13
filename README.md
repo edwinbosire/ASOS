@@ -19,6 +19,9 @@ React-Native is a powerful tool for creating UI, and therefore i've focussed onl
 - [ ] Favourites
 - [ ] Account
 
+## THINGS THAT ARE BROKEN
+- [x] All the data feeds; No image loading because Asos has update their product catalogue and the data bundled here is stale. Solution? 1. Move all the data including images to be local. 2. Update the data sources and repeat this process ever so often.
+
 #### LEFT OUT
 
 If you fork this project, feel free to extend the following features.
