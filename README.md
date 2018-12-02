@@ -2,7 +2,7 @@
 
  ![Show Case](https://github.com/edwinbosire/ASOS/raw/master/ASOS-Showcase%402x.png)
 
-##### *** This is work in progress ****
+##### *** This is work in progress. Also checkout the Expo branch which is more up to date, but a minefield of bugs ****
 A React Native Clone of the popular ASOS App, this project was done over one weekend for learning purposes and is theremore not being maintained. Feel free to fork and use as you please.
 
 It is platform agnostic although nearly all work done so far has been written and tested on iOS.
