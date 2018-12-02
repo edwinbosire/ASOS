@@ -24,7 +24,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "uk.co.edwinb.ASOS",
+      "buildNumber": "001"
+    },
+    "android": {
+      "package": "uk.co.edwinb.ASOS"
     },
     "githubUrl": "https://github.com/edwinbosire/ASOS"
   }
