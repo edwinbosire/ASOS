@@ -85,7 +85,20 @@ export default class ProductInfo extends Component {
                     [{nativeEvent: {contentOffset: {y: this._scrollY}}}]
                   )} 
                 >
-                    <Image style={{height:kPosterImageHeight, width:width, marginTop:-20}} source={require('../assets/images/product_1.jpeg')}/>
+                    <ScrollView 
+                    horizontal={true}
+                    contentContainerStyle={{  }}
+                    showsHorizontalScrollIndicator={false}
+                    snapToInterval={width}
+                    snapToAlignment={"center"}
+                    snapToStart={true}
+                    decelerationRate="fast">
+                    
+                        <Image style={{height:kPosterImageHeight, width:width, marginTop:-20}} source={require('../assets/images/product_jacket_1.jpeg')}/>
+                        <Image style={{height:kPosterImageHeight, width:width, marginTop:-20}} source={require('../assets/images/product_jacket_2.jpeg')}/>
+                        <Image style={{height:kPosterImageHeight, width:width, marginTop:-20}} source={require('../assets/images/product_1.jpeg')}/>
+
+                    </ScrollView>
                      {/* <ViewPager 
                         style={{ }}
                         dataSource={this.dataSource.cloneWithPages(IMGS)}
