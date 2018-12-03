@@ -153,13 +153,14 @@ const styles = StyleSheet.create({
         color:darkText,
     },
     subTitle:{
-        fontFamily:'futura-light',
+        fontFamily:'futura-medium',
+        fontWeight:"400",
         fontSize:14,
         textAlign: 'center',
         color:lightText,
     },
     subTitlePrice:{
-        fontFamily:'futura-light',
+        fontFamily:'futura-medium',
         fontSize:14,
         fontWeight:"200",
         color:lightText,

@@ -54,7 +54,11 @@ class Homepage extends Component {
                     <TouchableOpacity 
                     activeOpacity={0.8} 
                     underlayColor={extraLightBackground}
-                    onPress={() => this.props.navigation.navigate('ProductListPage') }
+                    onPress={ () => {
+                        this.props.navigation.navigate('ProductListPage', {
+                            title:'Party like an animal',
+                        }) 
+                    }}
                     style={{height:450, width:null, overflow:'hidden', marginBottom:20}}>
                         <ImageBackground style={{flex:1, height:null,width:null, resizeMode:'cover', }} source={ salesBanner }>
                         <View style={{flex:1,flexDirection:'column', justifyContent:'center', alignItems:'center', }}>
@@ -112,14 +116,34 @@ class Homepage extends Component {
     createRecommendedStyles(item){
         return (
         <View style={{marginVertical: 10}}>
-             <Card key={item.id} type='grid-item' title={item.title} subtitle={item.subtitle} imageName={item.image} />
+             <Card 
+             key={item.id} 
+             type='grid-item' 
+             title={item.title} 
+             subtitle={item.subtitle} 
+             imageName={item.image}
+             onCardPress={ () => {
+                this.props.navigation.navigate('ProductListPage', {
+                    title:'Recommended',
+                }) 
+            }} />
         </View>);
     }
     createGridItem(item){
         return (
             <View style={{marginHorizontal:10}}>
-                <Card key={item.id} type='grid-item' price={item.price} subtitle={item.subtitle} imageName={item.image} />
-            </View>
+                <Card 
+                key={item.id} 
+                type='grid-item' 
+                price={item.price} 
+                subtitle={item.subtitle} 
+                imageName={item.image}
+                onCardPress={ () => {
+                    this.props.navigation.navigate('ProductListPage', {
+                        title:'Recently Viewed',
+                    }) 
+                }} />
+                </View>
         );
      }
 }

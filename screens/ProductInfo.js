@@ -7,15 +7,12 @@ import {
     ScrollView, 
     Animated, 
     Text } from 'react-native';
-import {lightBackground, extraLightBackground,darkBackground, darkText, lightText, emerald} from '../components/AsosColors';
+import {lightBackground, extraLightBackground, darkText, lightText, emerald} from '../components/AsosColors';
 import Button from '../components/Button'
-import Icon from 'react-native-vector-icons/Ionicons';
 import LineIcon from 'react-native-vector-icons/SimpleLineIcons'
 import Card from '../components/Card'
 
-// import ViewPager from 'react-native-viewpager';
-
-const {width, height} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const kPosterImageHeight = 480;
 
 
@@ -186,7 +183,12 @@ export default class ProductInfo extends Component {
                 type='grid-item' 
                 price={item.price} 
                 subtitle={item.subtitle} 
-                imageName={item.image} />
+                imageName={item.image} 
+                onCardPress={ () => {
+                    this.props.navigation.navigate('ProductListPage', {
+                        title:'Recommended',
+                    }) 
+                }} />
             </View>
         );
      }
@@ -241,7 +243,7 @@ const styles = StyleSheet.create({
         color:darkText,
     },
     subTitle:{
-        fontFamily:'futura-light',
+        fontFamily:'futura-medium',
         fontSize:14,
         textAlign: 'left',
         color:lightText,
@@ -277,7 +279,7 @@ const styles = StyleSheet.create({
         paddingVertical:5,
     },
     basketButtonText: {
-        fontFamily: 'futura',
+        fontFamily: 'futura-medium',
         fontSize: 14,
         fontWeight: "800",
         textAlign: 'center',

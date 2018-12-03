@@ -14,19 +14,24 @@ import NavBar from '../components/NavBar'
 import ActionBar from '../components/ActionBar'
 
 const {width, height} = Dimensions.get('window');
+const kWidth = (width/2) - 15;
 
 export default class ProductListPage extends Component { 
 
     constructor(props){
         super(props)
-        props.title = "Party Like An Animal"
+        // props.title = "Party Like An Animal"
     }
 
     buttonSelected(state){ }
     render() {
+        const { navigation } = this.props
+        const title = navigation.getParam('title', 'Products')
         return (
             <View style={styles.container}>
-                <NavBar title={this.props.title.toUpperCase() } onBackPress={() => this.props.navigation.goBack()} />
+                <NavBar 
+                title={ title.toUpperCase() } 
+                onBackPress={() => this.props.navigation.goBack()} />
                 <ScrollView contentContainerStyle={styles.gridView} > 
                     <ActionBar 
                     firstButtonText={'SORT  ▼ '} 
@@ -56,7 +61,7 @@ export default class ProductListPage extends Component {
                 onPress={() => this.props.navigation.navigate('ProductInfo')}>
                 
                 <View style={[styles.gridItem]}>
-                    <Image style={[{flex:3, resizeMode:'contain', alignSelf:'center',}]} source={item.image}/>
+                    <Image style={[{width:kWidth, height:null, flex:3, resizeMode:'cover', alignSelf:'center',}]} source={item.image}/>
                     <View style={{flex:1,flexDirection:'column', justifyContent:'space-around', marginLeft:5 }}>
                         <View style={{justifyContent:'space-between', flexDirection:'row', marginTop:5,marginRight:5 }}>
                             <Text style={styles.price}>{item.price}</Text>
@@ -106,11 +111,11 @@ const styles = StyleSheet.create({
     gridItem: {
         overflow:'hidden',
         backgroundColor: 'white',
-        height:300,
-        width:(width/2) - 15,
+        height:250,
+        width:kWidth,
     },
     subTitlePrice:{
-        fontFamily:'futura-light',
+        fontFamily:'futura-medium',
         fontSize:14,
         fontWeight:"200",
         color:Color.lightText,
