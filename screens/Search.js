@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Color.lightBackground,
-        marginTop:30,
     },
     input: {
         margin:10,

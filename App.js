@@ -41,6 +41,7 @@ export default class App extends React.Component {
         // This is the font that we are using for our tab bar
         ...Icon.Ionicons.font,
         'futura': require('./assets/fonts/futura.ttf'),
+        'futura-light':require('./assets/fonts/FuturaPTLight.otf')
       }),
     ]);
   };

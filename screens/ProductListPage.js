@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Dimensions, ScrollView, Text } from 'react-native';
+import { 
+    StyleSheet, 
+    View, 
+    Image, 
+    Dimensions, 
+    ScrollView,
+    Text,
+    TouchableHighlight } from 'react-native';
 import Color from '../components/AsosColors';
 import Card from '../components/Card'
+import Icon from 'react-native-vector-icons/Ionicons';
 import NavBar from '../components/NavBar'
 import ActionBar from '../components/ActionBar'
 
@@ -11,25 +19,67 @@ export default class ProductListPage extends Component {
 
     constructor(props){
         super(props)
-        props.title = ""
+        props.title = "Party Like An Animal"
     }
+
+    buttonSelected(state){ }
     render() {
         return (
             <View style={styles.container}>
-                <NavBar title={this.props.title.toUpperCase()} />
-                <ScrollView contentContainerStyle={styles.gridView} showsVerticalScrollIndicator={false}> 
-                    <ActionBar firstButtonText={'SORT  ▼ '} secondButtonText={'filter'} />
+                <NavBar title={this.props.title.toUpperCase() } onBackPress={() => this.props.navigation.goBack()} />
+                <ScrollView contentContainerStyle={styles.gridView} > 
+                    <ActionBar 
+                    firstButtonText={'SORT  ▼ '} 
+                    secondButtonText={'filter'} 
+                    onButtonSelect={(s) => this.buttonSelected(s)}/>
                     <Text style={styles.resultsCount}> 1,234 styles found </Text>
-                    <Card type='grid-item' price='£35.00' subtitle="ASOS light camo jacket" source={newTrend} />
-                    <Card type='grid-item' price='£55.0' subtitle="Spring into summer" source={holiday} />
-                    <Card type='grid-item' price='£67.50' subtitle="Pump up, look sharp" source={activeWear} />
-                    <Card type='grid-item' price='£10.00' subtitle="Sharp gear for any occasion" source={suitGuide} /> 
+                    {products.map((item) => this.createGridItem(item))}
                 </ScrollView>
             </View>   
          );
     }
+
+    createGridItem(item){
+        return(
+            <TouchableHighlight style={{
+                backgroundColor:'white',
+                borderWidth: 0.5, 
+                borderColor: 'rgba(0,0,0,0.1)',
+                shadowColor:'black',
+                shadowOffset:{ width: 0, height: 3 },
+                shadowRadius:4,
+                shadowOpacity:0.1,
+                marginVertical:10,
+                }}
+                activeOpacity={0.8} 
+                underlayColor={Color.extraLightBackground}
+                onPress={() => this.props.navigation.navigate('ProductInfo')}>
+                
+                <View style={[styles.gridItem]}>
+                    <Image style={[{flex:3, resizeMode:'contain', alignSelf:'center',}]} source={item.image}/>
+                    <View style={{flex:1,flexDirection:'column', justifyContent:'space-around', marginLeft:5 }}>
+                        <View style={{justifyContent:'space-between', flexDirection:'row', marginTop:5,marginRight:5 }}>
+                            <Text style={styles.price}>{item.price}</Text>
+                            <Icon.Button style={{padding:0}} name="ios-heart-empty" size={25} color={Color.darkBackground}  backgroundColor="transparent"/>
+                        </View>
+                        <Text style={styles.subTitlePrice}>{item.subtitle}</Text>
+                    </View>
+                </View>
+            </TouchableHighlight>
+        )
+     }
+
 }
  
+const products = [
+    {id:0, price:'£35.00', subtitle:'Cold-Weather Newness', image:require('../assets/images/model_3.jpeg')},
+    {id:1, price:'£55.00', subtitle:'Spring into summer', image:require('../assets/images/model_2.jpeg')},
+    {id:2, price:'£90.00', subtitle:'ASOS light camo jacket', image:require('../assets/images/model_1.jpeg')},
+    {id:3, price:'£11.50', subtitle:'Another Influence PLUS Tropical Palm Pocket Vest', image:require('../assets/images/model_3.jpeg')},
+    {id:4, price:'£15.00', subtitle:'French Connection Henley T-Shirt', image:require('../assets/images/model_1.jpeg')},
+    {id:2, price:'£90.00', subtitle:'ASOS light camo jacket', image:require('../assets/images/model_1.jpeg')},
+];
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -52,11 +102,25 @@ const styles = StyleSheet.create({
         color: Color.lightText,
         paddingVertical:10,
         width:width,
-    }
+    },
+    gridItem: {
+        overflow:'hidden',
+        backgroundColor: 'white',
+        height:300,
+        width:(width/2) - 15,
+    },
+    subTitlePrice:{
+        fontFamily:'futura-light',
+        fontSize:14,
+        fontWeight:"200",
+        color:Color.lightText,
+    },
+    price:{
+        fontFamily:'futura',
+        fontSize:16,
+        fontWeight:"600",
+        textAlign: 'left',
+        color:Color.darkText,
+    },
+
 });
-
-
-const newTrend = 'http://content.asos-media.com/~/media/060417052531en-GB/mw-homepage/2017/April/11/1146x1496-newness-(2).jpg';
-const holiday = 'http://content.asos-media.com/~/media/210317114653en-GB/mw-homepage/2017/April/03/springbreak-app-02.jpg';
-const activeWear = 'http://content.asos-media.com/~/media/210317114821en-GB/mw-homepage/2017/April/03/mw-activewear-app-01.jpg';
-const suitGuide = 'http://content.asos-media.com/~/media/210317114935en-GB/mw-homepage/2017/April/03/mw-occasionwear-app-01.jpg';

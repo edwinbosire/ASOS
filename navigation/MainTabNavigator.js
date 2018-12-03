@@ -1,17 +1,28 @@
 import React from 'react';
 import { Image} from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
 import HomePage from '../screens/Homepage';
 import SearchScreen from '../screens/Search';
 import Basket from '../screens/Basket';
 import Favourites from '../screens/Favourites'
 import Profile from '../screens/Profile';
+import ProductInfo from '../screens/ProductInfo'
+import ProductListPage from '../screens/ProductListPage'
 
+const HomeStack = createStackNavigator({
+  Home: {screen: HomePage },
+  ProductListPage: {screen: ProductListPage},  
+  ProductInfo: {screen: ProductInfo}
+},{ headerMode: 'none' });
+
+const SearchStack = createStackNavigator({
+  Search: {screen: SearchScreen}
+},{ headerMode: 'none' });
 
 export default createBottomTabNavigator({
   Home: {
-    screen: HomePage,
+    screen: HomeStack,
     navigationOptions: {
       tabBarLabel: 'HOME',
       tabBarIcon: ({ tintColor }) => (
@@ -19,8 +30,9 @@ export default createBottomTabNavigator({
       )
     }
   },
+
   Search: {
-    screen: SearchScreen,
+    screen: SearchStack,
     navigationOptions: {
       tabBarLabel: 'SEARCH',
       tabBarIcon: ({ tintColor }) => (
@@ -55,6 +67,7 @@ export default createBottomTabNavigator({
       )
     }
   }
+
 }, {
   tabBarOptions: {
     activeTintColor: 'rgb(53,51,53)',

@@ -9,7 +9,7 @@ export default class RecentHeader extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>RECENTLY VIEWED</Text>
+                <Text style={styles.title}>{this.props.title}</Text>
                 <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground} onPress={()=> this.onCardPressed()}>
                     <Text style={styles.buttonText}>CLEAR</Text>
                 </TouchableHighlight>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         height:40,
-        backgroundColor:lightBackground,
+        backgroundColor:'rgb(250,248,250)',
         alignItems:'center',
     },
     title: {

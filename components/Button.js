@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity, TouchableHighlight, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {lightBackground, extraLightBackground,darkBackground, darkText, lightText, emerald} from './AsosColors';
 const {width, height} = Dimensions.get('window');
 
@@ -13,7 +13,7 @@ export default class Button extends React.Component {
         if (this.props.type === 'IconText'){
             content = (
         
-        <TouchableOpacity activeOpacity={0.8} underlayColor={extraLightBackground} onPress={() =>  console.log("pressed icon+text")}>
+        <TouchableOpacity activeOpacity={0.8} underlayColor={'transparent'} onPress={() =>  console.log("pressed icon+text")}>
                 <View style={{justifyContent:'center', alignItems:'stretch'}}>
                     <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={() =>  console.log("pressed icon+text button")} />
                     <Text style={styles.buttonText}> {this.props.title} </Text>
@@ -23,7 +23,16 @@ export default class Button extends React.Component {
 
         }else if (this.props.type === 'Icon'){
             content = (
-                 <Icon.Button style={{alignSelf:'center', margin:0}} name={this.props.icon} size={30} color={darkBackground}  backgroundColor="transparent" onPress={this.props.onPress}/>
+                 <Icon.Button 
+                 style={{alignSelf:'center', margin:0}} 
+                 name={this.props.icon} 
+                 size={30} 
+                 color={darkBackground}  
+                 backgroundColor={'transparent'}
+                 suppressHighlighting={true} 
+                 activeOpacity={0.9}
+                 underlayColor={'transparent'}
+                 onPress={this.props.onPress}/>
             );
 
         }else {

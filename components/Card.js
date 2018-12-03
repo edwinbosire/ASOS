@@ -32,9 +32,9 @@ renderCardWithTitle(title, subtitle) {
     return(
         <TouchableHighlight activeOpacity={0.8} underlayColor={extraLightBackground}onPress={this.props.onCardPress}>
             <View style={[styles.gridItem]}>
-                <Image style={{flex:3, resizeMode:'contain', alignSelf:'center', marginBottom:5, backgroundColor:'white'}} source={ this.props.imageName }/>
+                <Image style={{flex:3, resizeMode:'contain', alignSelf:'center', marginBottom:3, backgroundColor:'white'}} source={ this.props.imageName }/>
                 <View style={{flex:1, flexDirection:'column', justifyContent:'space-start'}}>
-                    <Text style={[styles.title, {marginBottom:5}]}> {title} </Text>
+                    <Text style={[styles.title, {marginBottom:3}]}> {title} </Text>
                     <Text style={styles.subTitle}> {subtitle} </Text>
                 </View>
             </View>
@@ -44,8 +44,7 @@ renderCardWithTitle(title, subtitle) {
 
 renderCardWithPrice(price, subtitle) {
     return(
-        <TouchableHighlight style={
-            {marginRight:20,
+        <TouchableHighlight style={{
             backgroundColor:'white',
             borderWidth: 0.5, 
             borderColor: 'rgba(0,0,0,0.1)',
@@ -53,8 +52,11 @@ renderCardWithPrice(price, subtitle) {
             shadowOffset:{ width: 0, height: 3 },
             shadowRadius:4,
             shadowOpacity:0.1,
-}}
-            activeOpacity={0.8} underlayColor={extraLightBackground}onPress={this.props.onCardPress}>
+            }}
+            activeOpacity={0.8} 
+            underlayColor={extraLightBackground}
+            onPress={this.props.onCardPress}>
+            
             <View style={[styles.gridItem]}>
                 <Image style={[{flex:3, resizeMode:'contain', alignSelf:'center',}]} source={this.props.imageName}/>
                 <View style={{flex:1,flexDirection:'column', justifyContent:'space-around', marginLeft:5 }}>
@@ -140,28 +142,24 @@ const styles = StyleSheet.create({
         overflow:'hidden',
         width:(width/2) - PADDING,
         height:300,
-        margin:0,
-        marginBottom:20,
-        padding:0,
         backgroundColor: 'white'
 
     },
     title:{
-        fontFamily:'Helvetica',
-        fontSize:18,
+        fontFamily:'futura',
+        fontSize:16,
         fontWeight:"800",
         textAlign: 'center',
         color:darkText,
     },
     subTitle:{
-        fontFamily:'Helvetica',
+        fontFamily:'futura-light',
         fontSize:14,
-        fontWeight:"400",
         textAlign: 'center',
         color:lightText,
     },
     subTitlePrice:{
-        fontFamily:'futura',
+        fontFamily:'futura-light',
         fontSize:14,
         fontWeight:"200",
         color:lightText,

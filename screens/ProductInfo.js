@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Dimensions, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { 
+    StyleSheet,
+    View, 
+    Image, 
+    Dimensions, 
+    ScrollView, 
+    Animated, 
+    Text } from 'react-native';
 import {lightBackground, extraLightBackground,darkBackground, darkText, lightText, emerald} from '../components/AsosColors';
 import Button from '../components/Button'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import ViewPager from 'react-native-viewpager';
+import Icon from 'react-native-vector-icons/Ionicons';
+import LineIcon from 'react-native-vector-icons/SimpleLineIcons'
+import Card from '../components/Card'
+
+// import ViewPager from 'react-native-viewpager';
 
 const {width, height} = Dimensions.get('window');
-
+const kPosterImageHeight = 480;
 
 
 export default class ProductInfo extends Component { 
@@ -14,31 +24,76 @@ export default class ProductInfo extends Component {
     constructor(props){
         super(props)
         
-        this.dataSource = new ViewPager.DataSource({
-          pageHasChanged: (p1, p2) => p1 !== p2,
-        });
+        // this.dataSource = new ViewPager.DataSource({
+        //   pageHasChanged: (p1, p2) => p1 !== p2,
+        // });
 
-        this.state = {
-            dataSource: this.dataSource.cloneWithPages(IMGS),
-            page: 0
-        }
+        // this.state = {
+        //     dataSource: this.dataSource.cloneWithPages(IMGS),
+        //     page: 0
+        // }
     }
+
+    componentWillMount() {
+
+        this._scrollY = new Animated.Value(0)
+    
+        this.startHeaderHeight = 60
+        this.endHeaderHeight = 0
+    
+        this.animatedHeaderHeight = this._scrollY.interpolate({
+          inputRange:[0, kPosterImageHeight-80],
+          outputRange:[this.startHeaderHeight, this.endHeaderHeight],
+          extrapolate: 'clamp'
+        })
+    
+        this.animatedOpacity = this.animatedHeaderHeight.interpolate ({
+          inputRange:[this.endHeaderHeight, this.startHeaderHeight],
+          outputRange:[0,1],
+          extrapolate:'clamp'
+        })
+        
+    }
+    
     render() {
+     
         return (
             <View style={styles.container}>
-                <View style={{position:'absolute', left:10, top:20, zIndex:2}}>
-                    <Button type='Icon' icon={'keyboard-backspace'} onPress={this.onBackButtonPressed}/>
+                <View style={{position:'absolute', left:10, top:20, zIndex:2, width:width}}>
+                    <Animated.View style={
+                        {flexDirection:'row', 
+                        justifyContent:'space-between',
+                        opacity:this.animatedOpacity,
+                    }
+                        }>
+                        <Button 
+                        type='Icon' 
+                        icon={'md-arrow-round-back'} 
+                        onPress={() => this.props.navigation.goBack()}/>
+
+                        <Button 
+                        type='Icon' 
+                        icon={'ios-share'} 
+                        onPress={() => this.props.navigation.goBack()}/>
+                    </Animated.View>
                 </View>
-                <ScrollView contentContainerStyle={{ alignItems:'center'}} showsVerticalScrollIndicator={false}>
-                    <View style={{height:480, width:width, marginTop:-20}}>
-                     <ViewPager 
+                <ScrollView 
+                contentContainerStyle={{ width:width }} 
+                showsVerticalScrollIndicator={false}
+                scrollEventThrottle= {16}
+                onScroll={Animated.event (
+                    [{nativeEvent: {contentOffset: {y: this._scrollY}}}]
+                  )} 
+                >
+                    <Image style={{height:kPosterImageHeight, width:width, marginTop:-20}} source={require('../assets/images/product_1.jpeg')}/>
+                     {/* <ViewPager 
                         style={{ }}
                         dataSource={this.dataSource.cloneWithPages(IMGS)}
                         renderPage={(data, pageId) => this._renderPage(data, pageId)}
                         isLoop={false}
                         autoPlay={false}
-                    />
-                    </View>
+                    /> */}
+                    {/* </Image> */}
                     {this.actionButtonGroup()}
                         <View style={styles.productDescription}>
                             <Text style={styles.price}> £30.00 </Text>
@@ -51,9 +106,16 @@ export default class ProductInfo extends Component {
                             <Text style={styles.optionsButtonText}> SIZE  ▼ </Text>
                         </View>
 
-                        <Icon.Button style={{width:width*0.9, alignItems:'center', justifyContent:'center'}}name="basket-fill" size={30} borderRadius={0} color='white' backgroundColor={emerald} onPress={this.onBackButtonPressed}>
+                        <LineIcon.Button 
+                        style={{marginHorizontal:20,  alignItems:'center', justifyContent:'center'}} 
+                        name="bag" 
+                        size={24} 
+                        borderRadius={0} 
+                        color='white' 
+                        backgroundColor={emerald} 
+                        onPress={this.onBackButtonPressed}>
                             <Text style={styles.basketButtonText}> ADD TO BAG </Text>
-                        </Icon.Button>
+                        </LineIcon.Button>
 
                         <View style={styles.productInfo}>
                             <View style={{backgroundColor:lightBackground, alignSelf:'stretch', borderBottomWidth: 1,borderColor: extraLightBackground,}}>
@@ -65,6 +127,19 @@ export default class ProductInfo extends Component {
                             
                             <Text style={styles.list}> Size guide </Text>
                         </View>
+
+                {/** BUY THE LOOK */}
+                <View style={{flex:1,  paddingVertical:20,  backgroundColor: 'rgb(250,248,250)'}}>
+                    <View style={{flexDirection:'row', justifyContent:'space-between', margin: 20}}>
+                        <Text style={{fontFamily:'futura', fontSize:18, color:darkText}}>{'BUY THE LOOK'}</Text>
+                        <Text style={{fontFamily:'futura-light', fontSize:14, color:darkText}}>{'5 items'}</Text>
+
+                    </View>
+                    <ScrollView horizontal={ true } contentContainerStyle={ styles.recentView }> 
+                        {recentlyViewed.map((item) => this.createGridItem(item))}
+                    </ScrollView> 
+                </View>
+
                 </ScrollView>
             </View>   
          );
@@ -83,14 +158,36 @@ export default class ProductInfo extends Component {
     actionButtonGroup() {
         return (
             <View style={styles.buttonGroup}>
-                {<Button type={'IconText'} icon={'ios-heart'} title={'SAVE'} />}
-                {<Button type={'IconText'} icon={'play'} title={'VIDEO'} />}
-                {<Button type={'IconText'} icon={'share-variant'} title={'SHARE'} />}
+                {<Button type={'IconText'} icon={'ios-heart-empty'} title={'SAVE'} />}
+                {<Button type={'IconText'} icon={'ios-play'} title={'VIDEO'} />}
+                {<Button type={'IconText'} icon={'md-share'} title={'SHARE'} />}
             </View>
         );
     }
+
+    createGridItem(item){
+        return (
+            <View style={{marginHorizontal:10}}>
+                <Card 
+                key={item.id} 
+                type='grid-item' 
+                price={item.price} 
+                subtitle={item.subtitle} 
+                imageName={item.image} />
+            </View>
+        );
+     }
+
 }
  
+const recentlyViewed = [
+    {id:0, price:'£35.00', subtitle:'Cold-Weather Newness', image:require('../assets/images/model_3.jpeg')},
+    {id:1, price:'£55.00', subtitle:'Spring into summer', image:require('../assets/images/model_2.jpeg')},
+    {id:2, price:'£90.00', subtitle:'ASOS light camo jacket', image:require('../assets/images/model_1.jpeg')},
+    {id:3, price:'£11.50', subtitle:'Another Influence PLUS Tropical Palm Pocket Vest', image:require('../assets/images/model_3.jpeg')},
+    {id:4, price:'£15.00', subtitle:'French Connection Henley T-Shirt', image:require('../assets/images/model_1.jpeg')}
+];
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -113,16 +210,16 @@ const styles = StyleSheet.create({
     },
     buttonGroup: {
         flexDirection:'row',
-        width:width-50,
         justifyContent:'space-between',
         alignItems:'center',
-        paddingVertical:20,
-        marginTop:20,
+        margin:20,
+        marginBottom:0,
+        paddingBottom:20,
         borderBottomWidth: 1,
         borderColor: extraLightBackground,
 
     },
-price:{
+    price:{
         fontFamily:'futura',
         fontSize:20,
         fontWeight:"800",
@@ -130,10 +227,9 @@ price:{
         paddingVertical:10,
         color:darkText,
     },
-subTitle:{
-        fontFamily:'futura',
-        fontSize:16,
-        fontWeight:"200",
+    subTitle:{
+        fontFamily:'futura-light',
+        fontSize:14,
         textAlign: 'left',
         color:lightText,
     },
@@ -159,7 +255,7 @@ subTitle:{
     },
     optionsButtonText: {
         fontFamily: 'futura',
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: "200",
         textAlign: 'center',
         color: darkText,
@@ -169,11 +265,10 @@ subTitle:{
     },
     basketButtonText: {
         fontFamily: 'futura',
-        fontSize: 18,
-        fontWeight: "200",
+        fontSize: 14,
+        fontWeight: "800",
         textAlign: 'center',
         color: 'white',
-        paddingVertical:5,
     },
     productInfo:{
         alignSelf:'stretch', 
@@ -182,9 +277,8 @@ subTitle:{
         borderColor: extraLightBackground,
     },
     list:{
-        fontFamily: 'futura',
-        fontSize: 20,
-        fontWeight: "100",
+        fontFamily: 'futura-light',
+        fontSize: 16,
         textAlign: 'left',
         color: darkText,
         marginVertical:10,
@@ -192,15 +286,16 @@ subTitle:{
         borderColor: extraLightBackground,
 
     },
+    recentView:{
+        flexDirection:'row', 
+        flexWrap:'nowrap',
+        alignItems: 'flex-start',
+        justifyContent:'space-between',
+        marginLeft:10,
+        marginBottom:20,
+    }
+
 });
 
 
 
-const productImage = 'https://images.asos-media.com/products/asos-double-breasted-trench-coat-with-shower-resistance-in-light-khaki/7487951-1-lightkhaki?$XL$'
-const backButtonImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAQAAAD/5HvMAAAAbklEQVR4Ae3ZxQHDMAxAUZ197sBasQu1gXuoaHhfC7ygAyFJktYysi7Oc56si7OS6uKspLo4z7hHqYtzw8HBwemNg4ODg/OtqY3zfIkD9FdSVEZq5bJvn4SEhISEhISEVHw43yGlny9Hv6ckSdIEb5dSW8V5J5sAAAAASUVORK5CYII="
-var IMGS = [
-  'http://images.asos-media.com/products/asos-super-skinny-jeans-with-double-zip-and-biker-details-in-washed-black/7911409-1-washedblack?$XXL$&wid=513&fit=constrain',
-  'http://images.asos-media.com/products/asos-super-skinny-jeans-with-double-zip-and-biker-details-in-washed-black/7911409-3?$XXL$&wid=513&fit=constrain',
-  'http://images.asos-media.com/products/asos-super-skinny-jeans-with-double-zip-and-biker-details-in-washed-black/7911409-2?$XXL$&wid=513&fit=constrain',
-  'http://images.asos-media.com/products/asos-super-skinny-jeans-with-double-zip-and-biker-details-in-washed-black/7911409-4?$XXL$&wid=513&fit=constrain',
-];

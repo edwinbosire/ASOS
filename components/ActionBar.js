@@ -8,8 +8,6 @@ export default class ActionBar extends Component {
     constructor(props){
         super(props)
         type = 'search'
-        props.firstButtonText = "",
-        props.secondButtonText = "",
         this.state = {
             selected:this.props.defaultGender,
             leftOffset:new Animated.Value(width/2 + 10)
@@ -31,7 +29,7 @@ export default class ActionBar extends Component {
         this.props.onButtonSelect(text)
         this.setState({selected:text.toUpperCase()})
         let value = 10;
-        if (text === 'MEN'){
+        if (text === 'MEN' | text == 'filter'){
             value = width/2 + 10
         }else{
             value = 10
@@ -48,7 +46,7 @@ export default class ActionBar extends Component {
     buttonWithText(text){
         return (
             <TouchableHighlight activeOpacity={0.8} underlayColor={Color.extraLightBackground}onPress={() => this.toggleSelection(text)}>
-                <Text style={styles.buttonText}> {text.toUpperCase()}</Text>
+                <Text style={styles.buttonText}>{text.toUpperCase()}</Text>
             </TouchableHighlight>
         )
     }

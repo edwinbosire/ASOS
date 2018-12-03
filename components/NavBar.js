@@ -12,7 +12,7 @@ export default class NavBar extends Component {
         }
         return (
             <View style={styles.plainNavigationBar}>
-                <Button type={'Icon'} icon={'keyboard-backspace'} onPress={this.props.onBackPress}/>
+                <Button type={'Icon'} icon={'md-arrow-round-back'} onPress={this.props.onBackPress}/>
                 <Text style={[styles.title, {width: (width - 120)}]}> {this.props.title} </Text>
             </View>
 
