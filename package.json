@@ -13,16 +13,13 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.0.0",
     "@expo/samples": "2.1.1",
-    "expo": "^31.0.2",
+    "expo": "^31.0.4",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-native-viewpager": "^0.2.13",
     "react-navigation": "^2.18.2"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
     "babel-preset-expo": "^5.0.0",
     "jest-expo": "^31.0.0"
   }
