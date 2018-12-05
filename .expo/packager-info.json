@@ -1,8 +1,8 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 23449,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://hd-qw3.nscoder.asos.exp.direct",
   "packagerNgrokUrl": "https://packager.hd-qw3.nscoder.asos.exp.direct",
   "ngrokPid": 23464
