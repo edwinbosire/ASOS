@@ -117,7 +117,7 @@ export default class ProductInfo extends Component {
                         </View>
 
                         <LineIcon.Button 
-                        style={{marginHorizontal:20,  alignItems:'center', justifyContent:'center'}} 
+                        style={{marginHorizontal:0,  alignItems:'center', justifyContent:'center'}} 
                         name="bag" 
                         size={24} 
                         borderRadius={0} 

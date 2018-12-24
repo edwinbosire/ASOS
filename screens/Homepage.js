@@ -30,7 +30,7 @@ class Homepage extends Component {
         return (
             <ScrollView 
             showsVerticalScrollIndicator={false} 
-            contentContainerStyle={{ width:width}}>
+            contentContainerStyle={{ width:width, backgroundColor:'white'}}>
                 {/** |Premier Delivery| Outlet| Party like an animal */}
                 <View style={{marginHorizontal:kHorizontalMargin}}>
                     <Card type='wide' imageName={premiumDeliveryBanner}/>
