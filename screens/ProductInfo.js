@@ -21,14 +21,6 @@ export default class ProductInfo extends Component {
     constructor(props){
         super(props)
         
-        // this.dataSource = new ViewPager.DataSource({
-        //   pageHasChanged: (p1, p2) => p1 !== p2,
-        // });
-
-        // this.state = {
-        //     dataSource: this.dataSource.cloneWithPages(IMGS),
-        //     page: 0
-        // }
     }
 
     componentWillMount() {
@@ -44,9 +36,9 @@ export default class ProductInfo extends Component {
           extrapolate: 'clamp'
         })
     
-        this.animatedOpacity = this.animatedHeaderHeight.interpolate ({
-          inputRange:[this.endHeaderHeight, this.startHeaderHeight],
-          outputRange:[0,1],
+        this.animatedOpacity = this._scrollY.interpolate ({
+          inputRange:[40, 100],
+          outputRange:[1,0],
           extrapolate:'clamp'
         })
         
